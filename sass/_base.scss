@@ -1,0 +1,28 @@
+$font: 'Igna Sans';
+$color--primary: #7FAF56;
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+
+@mixin fullscreen {
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+html, body, main {
+	height: 100%;
+}
+
+:root {
+	font-size: 62.5%;
+}
+
+* {
+	font-family: $font;
+}

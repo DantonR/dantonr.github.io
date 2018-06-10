@@ -1,0 +1,23 @@
+@import 'base';
+@import 'type';
+
+
+
+.hero-img {
+	@include fullscreen;
+	background-image: url("../img/waterfall.jpg")
+}
+
+.testbox {
+	background: $color--primary;
+	width: 200px;
+	height: 200px;
+	@include border-radius(100%);
+}
+
+.content-section__first {
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
