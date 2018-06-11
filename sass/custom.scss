@@ -13,16 +13,17 @@
 // FIRST PAGE START
 .hero-img {
 	@include fullscreen;
-	background-image: url("../img/waterfall.jpg");
+	background-image: url("../img/waterfall-2.jpg");
 	background-position: bottom center;
 	display: flex;
 }
 
 .content-section__first {
-	max-width: 30rem;
+	// text-align: center
+	max-width: 40rem;
+	margin: 0 auto;
 	border-radius: 2rem;
-	padding: 5rem;
-	background: black;
+	padding: 3rem;
 }
 // FIRST PAGE END
 
