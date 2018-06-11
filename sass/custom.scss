@@ -1,23 +1,42 @@
 @import 'base';
 @import 'type';
 
-
-
-.hero-img {
-	@include fullscreen;
-	background-image: url("../img/waterfall.jpg")
+// REPEATED ELEMENTS
+.content-section {
+	height: 100%;
+}
+.user-form {
+	font-size: $p1;
 }
 
-.testbox {
-	background: $color--primary;
-	width: 200px;
-	height: 200px;
-	@include border-radius(100%);
+
+// FIRST PAGE START
+.hero-img {
+	@include fullscreen;
+	background-image: url("../img/waterfall.jpg");
+	background-position: bottom center;
+	display: flex;
 }
 
 .content-section__first {
-	display: flex;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
+	max-width: 30rem;
+	border-radius: 2rem;
+	padding: 5rem;
+	background: black;
 }
+// FIRST PAGE END
+
+// SECOND PAGE START
+.content-section__second {
+	height: 30%;
+	background: green;
+	text-align: center;
+	padding-top: 10rem;
+}
+
+#map {
+	width: 80vw;
+	margin: 0 auto;
+	height: 60vh;
+}
+// SECOND PAGE END

@@ -1,7 +1,20 @@
+$h1: 10.14rem;
+$h2: 6.34rem;
+$h3: 5.072rem;
+$h4: 3.593rem;
+$h5: 2.536rem;
+$h6: 2.113rem;
+$p1: 1.691rem;
+
+
 .heading-one {
-	font-size: 5rem;
+	font-size: $h3;
 	color: white;
+}
+.heading-three {
+	font-size: $h4;
 }
 .para__intro {
 	color: white;
+	font-size: $p1;
 }

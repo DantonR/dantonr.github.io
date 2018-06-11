@@ -1,3 +1,7 @@
 gulpfile.js
 node_modules
 package.json
+designfiles
+documentation
+research
+.DS_Store

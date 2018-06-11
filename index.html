@@ -7,15 +7,56 @@
 	<title>Transport Web App</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/custom.min.css">
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
 </head>
 <body>
 	<div class="hero-img">
-		<div class="container content-section content-section__first">
+		<div class="content-section content-section__first">
 			<h1 class="heading-one">Welcome to Book & Go!</h1>
 			<p class="para para__intro">Looking to explore New Zealand? Plan your trip here at Book & Go and find the best rental vehicle for you.</p>
 		</div>
 	</div>
 
+	<div class="content-section">
+		<div class="container content-section__second">
+			<h2 class="heading-three">Where are you traveling?</h2>
 
+			<form class="user-form" action="index.html" method="post">
+				<label for="pickup">Where are you traveling from?</label><input type="text" name="pickup" value="">
+				<br />
+				<label for="dropoff">Where are you traveling to?</label><input type="text" name="pickup" value="">
+			</form>
+
+
+		</div>
+		<div id='map'></div>
+	</div>
+
+	<div class="content-section">
+		<form action="" class="user-form">
+			<label for="passengers">How many people are you traveling with?</label>
+			<br />
+			<input type="text">
+			<br />
+			<label for="date">How many people are you traveling with?</label>
+			<br />
+			<input type="text">
+			<br>
+			<input type="text">
+		</form>
+	</div>
+
+
+	<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudG9uciIsImEiOiJjamk5d3EzbGsxMWJvM2twYXF0amoybTZyIn0.KXnE7KK1UNlZWKzcHpy19g';
+	var map = new mapboxgl.Map({
+	container: 'map',
+	style: 'mapbox://styles/mapbox/streets-v10',
+	center: [-77.035, 38.875],
+	zoom: 15
+	});
+	</script>
 </body>
 </html>
