@@ -17,6 +17,9 @@ $(document).ready(function() {
 	});
 });
 
+// material design
+mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+
 
 // TEST JS IN THIS FUNCTION
 var testingJs = function(){
