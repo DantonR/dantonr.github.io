@@ -1,21 +1,21 @@
-$h1: 10.14rem;
-$h2: 6.34rem;
-$h3: 5.072rem;
-$h4: 3.593rem;
-$h5: 2.536rem;
-$h6: 2.113rem;
-$p1: 1.691rem;
+$scale--7: 10.14rem; // 101px
+$scale--6: 6.34rem; // 64px
+$scale--5: 5.072rem; // 50px
+$scale--4: 3.593rem; // 35px
+$scale--3: 2.536rem; // 25 px
+$scale--2: 2.113rem; // 21 px
+$scale--1: 1.691rem; // 16px
 
 
 .heading-one {
-	font-size: $h4;
+	font-size: $scale--4;
 	color: white;
 	text-align: center;
 }
-.heading-three {
-	font-size: $h4;
+.heading-two {
+	font-size: $scale--2;
 }
 .para__intro {
 	color: white;
-	font-size: $p1;
+	font-size: $scale--1;
 }

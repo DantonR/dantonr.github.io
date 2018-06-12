@@ -1,6 +1,7 @@
 $font: 'Igna Sans';
 $color__primary: #7FAF56;
 $color__grey--dark: #202020;
+$color__grey--light: #EDEDED;
 
 @mixin border-radius($radius) {
 	-webkit-border-radius: $radius;

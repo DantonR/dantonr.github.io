@@ -5,51 +5,20 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Transport Web App</title>
+	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+	<!-- MAPBOX -->
 	<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+	<!-- PAGEPILING -->
 	<link rel="stylesheet" type="text/css" href="css/jquery.pagepiling.css" />
+	<!-- MY CSS -->
 	<link rel="stylesheet" href="css/custom.min.css">
 
 </head>
 <body>
-	<!-- <div class="hero-img">
-		<div class="content-section content-section__first">
-			<h1 class="heading-one">Welcome to Book & Go!</h1>
-			<p class="para para__intro">Looking to explore New Zealand? Plan your trip here at Book & Go and find the best rental vehicle for you.</p>
-		</div>
-	</div>
-
-	<div class="content-section">
-		<div class="container content-section__second">
-			<h2 class="heading-three">Where are you traveling?</h2>
-
-			<form class="user-form" action="index.html" method="post">
-				<label for="pickup">Where are you traveling from?</label><input type="text" name="pickup" value="">
-				<br />
-				<label for="dropoff">Where are you traveling to?</label><input type="text" name="pickup" value="">
-			</form>
-
-
-		</div>
-		<div id='map'></div>
-	</div>
-
-	<div class="content-section">
-		<form action="" class="user-form">
-			<label for="passengers">How many people are you traveling with?</label>
-			<br />
-			<input type="text">
-			<br />
-			<label for="date">How many people are you traveling with?</label>
-			<br />
-			<input type="text">
-			<br>
-			<input type="text">
-		</form>
-	</div> -->
 
 	<div id="pagepiling">
+
 		<div class="section hero-img">
 			<div class="content-section content-section__first">
 				<h1 class="heading-one">Book & Go</h1>
@@ -57,32 +26,58 @@
 			</div>
 		</div>
 
-		<div class="section">
+		<div class="section content-section">
 			<div class="container content-section__second">
-				<h2 class="heading-three">Where are you traveling?</h2>
+				<h2 class="heading-two">Where are you travelling?</h2>
 
 				<form class="user-form" action="index.html" method="post">
-					<label for="pickup">Where are you traveling from?</label><input type="text" name="pickup" value="">
+					<input type="text" class="user-input" name="pickup" value="Pickup location">
 					<br />
-					<label for="dropoff">Where are you traveling to?</label><input type="text" name="pickup" value="">
+					<input type="text" class="user-input" name="pickup" value="Dropoff Location">
 				</form>
-
-
 			</div>
 			<div id='map'></div>
 		</div>
 
-		<div class="section"></div>
-		<div class="section"></div>
+
+		<div class="section content-section">
+			<div class="container content-section__third">
+				<h2 class="heading-two">How many people are you traveling with?</h2>
+
+				<form class="user-form" action="index.html" method="post">
+					<input type="text" class="user-input" name="pickup" placeholder="Amount of people">
+					<br />
+					<h2>How many days will you be traveling?</h2>
+					<input type="text" class="user-input" name="pickup" placeholder="Pickup date">
+					<br />
+					<input type="text" class="user-input" name="pickup" placeholder="Dropoff Date">
+				</form>
+			</div>
+		</div>
+
+		<div class="section content-section content-section__fourth">
+			<div class="container ">
+				<h2>Text</h2>
+			</div>
+		</div>
+
+		<div class="section content-section content-section__fifth">
+			<div class="container ">
+				<h2>Text</h2>
+			</div>
+		</div>
 	</div>
+	<!-- PAGEPILING END -->
 
+
+
+	<!-- MAPBOX -->
+	<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+	<!-- JQUERY -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<!-- PAGEPILING -->
 	<script type="text/javascript" src="js/jquery.pagepiling.js"></script>
-	<script type="text/javascript" src="js/script.js">
-
-	</script>
-	<script>
-
-	</script>
+	<!-- MY SCRIPT -->
+	<script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

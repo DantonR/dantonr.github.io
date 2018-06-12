@@ -4,9 +4,19 @@
 // REPEATED ELEMENTS
 .content-section {
 	height: 100%;
+	background-color: white;
 }
+.content-section:first-child {
+	background-color: transparent;
+}
+
 .user-form {
-	font-size: $p1;
+	font-size: $scale--1;
+}
+
+.user-input {
+	background: $color__grey--light;
+
 }
 
 
@@ -16,28 +26,40 @@
 	background-image: url("../img/waterfall-2.jpg");
 	background-position: bottom center;
 	display: flex;
+	height: 100vh;
 }
 
 .content-section__first {
 	// text-align: center
 	max-width: 40rem;
 	margin: 0 auto;
-	border-radius: 2rem;
 	padding: 3rem;
 }
 // FIRST PAGE END
 
 // SECOND PAGE START
 .content-section__second {
-	height: 30%;
-	background: green;
-	text-align: center;
-	padding-top: 10rem;
+	height: 40%;
+	padding-top: 5.6rem;
+	padding-top: 5.6rem;
 }
 
 #map {
-	width: 80vw;
+	width: 100vw;
 	margin: 0 auto;
 	height: 60vh;
 }
 // SECOND PAGE END
+
+// THIRD PAGE START
+.content-section__third {
+	padding-top: 5.6rem;
+}
+// THIRD PAGE END
+
+//FOURTH PAGE START
+.content-section__fourth {
+	@include fullscreen;
+	background-image: url("../img/road.jpg");
+	padding-top: 5.6rem;
+}
