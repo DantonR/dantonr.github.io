@@ -14,23 +14,23 @@ $(document).ready(function() {
 	$('#pagepiling').pagepiling({
 		verticalCentered: false,
 		scrollingSpeed: 200,
+		normalScrollElements: '.mapboxgl-map'
 	});
 });
 
 // material design
-mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+// mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
 
 
 // TEST JS IN THIS FUNCTION
 var testingJs = function(){
 	// PREVENT SCROLL TEST
-	var mapBoxDiv = document.getElementById('map');
-	console.log('test is working');
+	var mapBoxDiv = document.querySelector('.mapboxgl-canvas');
+	console.dir(mapBoxDiv);
+	mapBoxDiv.addEventListener('click', function(){
+		console.log('clickkkking');
+	}, false)
 
-	document.addEventListener('mousewheel DOMMouseScroll', function() {
-	        console.log('scrolling');
-	});
-	// PREVENT SCROLL TEST END
 }();
 
 
