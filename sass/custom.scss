@@ -16,13 +16,17 @@
 }
 .box-1 {
 	height: 10%;
+	padding-top: 10px;
 }
 .box-2 {
 	height: 70%;
 }
 .box-3 {
 	// align-self: flex-end;
-	height: 20%;
+	height: 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .container {
 	height: 100%;
@@ -86,19 +90,19 @@
 // 	}
 // }
 //
-// .btn {
-// 	border-radius: 80%;
-// }
-// .btn-primary {
-// 	width: 4rem;
-// 	height: 4rem;
-// 	background: $color__primary;
-// }
-// .btn-secondary {
-// 	width: 3rem;
-// 	height: 3rem;
-// 	background: $color__primary;
-// }
+.btn {
+	border-radius: 80%;
+}
+.btn-primary {
+	width: 4rem;
+	height: 4rem;
+	background: $color__primary;
+}
+.btn-secondary {
+	width: 3rem;
+	height: 3rem;
+	background: $color__primary;
+}
 // .btn-container {
 // 	position: absolute;
 // 	bottom: 2rem;
