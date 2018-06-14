@@ -31,6 +31,7 @@
 // BUTTONS
 .btn {
 	border-radius: 80%;
+	border: none;
 }
 .btn-primary {
 	width: 4rem;
@@ -40,7 +41,10 @@
 .btn-secondary {
 	width: 3rem;
 	height: 3rem;
-	background: $color__primary;
+	background: $color__grey--light;
+	color: black;
+	font-weight: 900;
+	font-size: 1.5rem;
 }
 .btn-container {
 	position: absolute;
@@ -54,8 +58,8 @@
 
 
 #map {
-	width: 100vw;
+	width: 100%;
 	margin: 0 auto;
-	height: 50vh;
+	height: 78vh;
 }
 // SECOND PAGE END

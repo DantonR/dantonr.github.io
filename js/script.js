@@ -10,21 +10,22 @@ $(document).ready(function() {
 });
 
 // mapbox initializing
-// mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudG9uciIsImEiOiJjamk5d3EzbGsxMWJvM2twYXF0amoybTZyIn0.KXnE7KK1UNlZWKzcHpy19g';
-// var map = new mapboxgl.Map({
-// container: 'map',
-// style: 'mapbox://styles/mapbox/streets-v10',
-// center: [-77.035, 38.875],
-// zoom: 15
-// });
-//
-// var directions = new MapboxDirections({
-//   accessToken: 'YOUR-MAPBOX-ACCESS-TOKEN',
-//   unit: 'metric',
-//   profile: 'mapbox/cycling'
-// });
-//
-// map.addControl(directions, 'top-left');
+var token = 'pk.eyJ1IjoiZGFudG9uciIsImEiOiJjamk5d3EzbGsxMWJvM2twYXF0amoybTZyIn0.KXnE7KK1UNlZWKzcHpy19g';
+mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudG9uciIsImEiOiJjamk5d3EzbGsxMWJvM2twYXF0amoybTZyIn0.KXnE7KK1UNlZWKzcHpy19g';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/streets-v10',
+center: [-77.035, 38.875],
+zoom: 15
+});
+
+var directions = new MapboxDirections({
+  accessToken: token,
+  unit: 'metric',
+  profile: 'mapbox/cycling'
+});
+
+map.addControl(directions, 'top-left');
 
 
 // test your own javascript within this function
@@ -37,19 +38,6 @@ var testingJs = function(){
 	}, false)
 
 }();
-
-
-
-// function preventScroll(e) {
-// 	console.log('this is scroll');
-// 	if (e.target.id === 'map') {
-// 		console.log('hahah');
-// 		$.fn.pagepiling.setAllowScrolling(false);
-// 	} else {
-// 		$.fn.pagepiling.setAllowScrolling(true);
-// 	}
-// }
-
 
 // APP START
 var app = {
