@@ -9,6 +9,14 @@ center: [-77.035, 38.875],
 zoom: 15
 });
 
+var directions = new MapboxDirections({
+  accessToken: 'YOUR-MAPBOX-ACCESS-TOKEN',
+  unit: 'metric',
+  profile: 'mapbox/cycling'
+});
+
+map.addControl(directions, 'top-left');
+
 // pagepiling
 $(document).ready(function() {
 	$('#pagepiling').pagepiling({
