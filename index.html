@@ -5,117 +5,111 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Transport Web App</title>
+
 	<!-- BOOTSTRAP -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
 	<!-- MAPBOX -->
 	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+
 	<!-- PAGEPILING -->
 	<link rel="stylesheet" type="text/css" href="css/jquery.pagepiling.css" />
+
 	<!-- MY CSS -->
 	<link rel="stylesheet" href="css/custom.min.css">
 
 </head>
+
+<!-- *****BODY START***** -->
 <body>
-	<!-- ADDED BRANCHES -->
+
+	<!-- *** Pagepiling start *** -->
 	<div id="pagepiling">
-		<section class="section">
-			<div class="hero-img">
-				<div class="container-fluid">
+		<!-- * First page * -->
+		<section class="section page-one hero-img">
+			<div class="container">
+				<div class="row">
 					<div class="col-md-12 header">
-						<div class="btn btn-secondary"></div>
+						<button class="btn btn-secondary"></button>
 					</div>
 					<div class="col-md-12 content">
-						<h1>Book & Go</h1>
+						<h1>Welcome to Book & Go!</h1>
 						<p>Looking to explore New Zealand? Plan your trip  here at Book & Go and find the best rental vehicle  for you.</p>
 					</div>
 					<div class="col-md-12 footer">
-						<h5>PLAN YOUR TRIP</h5>
-						<div class="btn-container">
-							<a class="btn btn-primary" ></a>
-						</div>
+						<h5>PLAN YOUR TRIP!</h5>
+						<button class="btn btn-primary"></button>
 					</div>
 				</div>
 			</div>
 		</section>
+		<!-- * First page end * -->
 
 
-		<section class="section">
-			<div class="container-fluid">
-				<div class="col-md-12 header">
-					<div class="btn btn-secondary"></div>
-				</div>
-				<div class="col-md-12 content">
-					<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
-					<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />
-					<div id="map"></div>
-				</div>
-				<div class="col-md-12 footer">
-					<h5>PLAN YOUR TRIP</h5>
-					<div class="btn-container">
-						<a class="btn btn-primary" ></a>
+
+		<!-- * Second  page * -->
+		<section class="section page-two">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 header">
+						<button class="btn btn-secondary"></button>
+						<h6>GO BACK</h6>
+					</div>
+					<div class="col-md-12 content">
+						<h1>Where are you headed?</h1>
+						<div id="map"></div>
+					</div>
+					<div class="col-md-12 footer">
+						<h1>here is the footer</h1>
 					</div>
 				</div>
 			</div>
 		</section>
+		<!-- * Second page end * -->
 
 
 
-		<div class="section content-section">
-			<!-- <div class="container content-section__second">
-				<h2 class="heading-two">Where are you travelling?</h2>
-
-				<form class="user-form" action="index.html" method="post">
-					<input type="text" class="user-input" name="pickup" value="Pickup location">
-					<br />
-					<input type="text" class="user-input" name="pickup" value="Dropoff Location">
-				</form>
-			</div> -->
 
 
-		</div>
 
 
-		<div class="section content-section">
-			<div class="container content-section__third">
-				<h2 class="heading-two">How many people are you traveling with?</h2>
 
-				<form class="user-form" action="index.html" method="post">
-					<input type="text" class="user-input" name="pickup" placeholder="Amount of people">
-					<br />
-					<h2>How many days will you be traveling?</h2>
-					<input type="text" class="user-input" name="pickup" placeholder="Pickup date">
-					<br />
-					<input type="text" class="user-input" name="pickup" placeholder="Dropoff Date">
-				</form>
-			</div>
-		</div>
 
-		<div class="section content-section content-section__fourth">
-			<div class="container ">
-				<h2>Text</h2>
-			</div>
-		</div>
 
-		<div class="section content-section content-section__fifth">
-			<div class="container ">
-				<h2>Text</h2>
-				<button class="foo-button mdc-button">Button</button>
-			</div>
-		</div>
+
+
+
+	<!-- Pagepiling end -->
 	</div>
-	<!-- PAGEPILING END -->
 
 
 
-	<!-- MAPBOX -->
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- *****SCRIPTS***** -->
+	<!-- mapbox -->
+
 
 	<!-- JQUERY -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 	<!-- PAGEPILING -->
 	<script type="text/javascript" src="js/jquery.pagepiling.js"></script>
+
 	<!-- MATERIAL DESIGN -->
 	<script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
 	<!-- MY SCRIPT -->
 	<script type="text/javascript" src="js/script.js"></script>
 </body>

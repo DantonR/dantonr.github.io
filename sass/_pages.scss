@@ -1,0 +1,16 @@
+.page-two, .page-three, .page-four, .page-five {
+	background: white;
+}
+.page-one {
+	color: white;
+}
+
+// First page
+.hero-img {
+	@include fullscreen;
+	background-image: url("../img/waterfall-2.jpg");
+	background-position: bottom center;
+	display: flex;
+	height: 100%;
+	justify-content: center;
+}

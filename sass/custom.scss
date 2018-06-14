@@ -1,40 +1,13 @@
 @import 'base';
+@import 'layout';
 @import 'type';
+@import 'pages';
 
 // MAJOR SECTIONS
-.header {
-	// height: 10vh;
-	padding-top: 1.5rem;
-	flex: 0 0 10%;
-}
-.content {
-	flex: 0 0 auto;
-}
-.footer {
-	align-self: flex-end;
-	margin-top: auto;
-	padding-bottom: 3vh;
-	display: flex;
-	justify-content: center;
-	flex-grow: 0 0 auto;
-	height: 8rem;
-}
-.container-fluid {
-	height: 100%;
-	display: flex;
-	align-items: flex-start;
-	flex-direction: column;
-	color: white;
-}
 .white-bg {
 	background: white;
 }
 // REPEATED ELEMENTS
-.content-section {
-	// height: 95%;
-	background-color: white;
-	padding-top: 5vh;
-}
 .content-section:first-child {
 	background-color: transparent;
 }
@@ -78,16 +51,7 @@
 }
 
 
-// FIRST PAGE START
-.hero-img {
-	@include fullscreen;
-	background-image: url("../img/waterfall-2.jpg");
-	background-position: bottom center;
-	display: flex;
-	height: 100%;
-	justify-content: center;
-	// flex-direction: column;
-}
+
 
 #map {
 	width: 100vw;

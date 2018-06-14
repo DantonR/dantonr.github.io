@@ -1,0 +1,21 @@
+.header {
+	height: 10vh;
+	margin-bottom: 1vh;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+.content {
+	height: 74vh;
+	margin-bottom: 1vh;
+}
+.footer {
+	height: 14vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.header, .content, .footer {
+	border: 2px solid pink;
+}
