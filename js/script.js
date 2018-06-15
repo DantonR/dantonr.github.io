@@ -15,17 +15,18 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudG9uciIsImEiOiJjamk5d3EzbGsxMWJvM2twYXF0a
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/streets-v10',
-center: [-77.035, 38.875],
-zoom: 15
+center: [174.778029, -41.287565],
+zoom: 4
 });
 
 var directions = new MapboxDirections({
   accessToken: token,
   unit: 'metric',
-  profile: 'mapbox/cycling'
+  profile: 'mapbox/driving'
 });
 
 map.addControl(directions, 'top-left');
+console.log(directions);
 
 
 // test your own javascript within this function
