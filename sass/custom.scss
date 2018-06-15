@@ -12,6 +12,8 @@
 	background-color: transparent;
 }
 
+
+// FORMS
 .user-form {
 	font-size: $scale--1;
 }
@@ -26,6 +28,14 @@
 	&:focus {
 		border-bottom-color: blue;
 	}
+}
+
+.user-form__days {
+	margin-top: 3rem;
+}
+
+.user-input__calender {
+	margin-top: 0.2rem;
 }
 
 // BUTTONS
