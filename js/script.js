@@ -30,13 +30,7 @@ map.addControl(directions, 'top-left');
 
 // test your own javascript within this function
 var testingJs = function(){
-	// PREVENT SCROLL TEST
-	var mapBoxDiv = document.querySelector('.mapboxgl-canvas');
-	console.dir(mapBoxDiv);
-	mapBoxDiv.addEventListener('click', function(){
-		console.log('clickkkking');
-	}, false)
-
+	console.log(vehicles);
 }();
 
 // APP START

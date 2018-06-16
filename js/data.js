@@ -12,13 +12,13 @@ var vehicles = {
 		cost: 129,
 		days: [1, 10],
 		fuel: 8.5
-	}
+	},
 	largeCar: {
 		seats: [1, 5],
 		cost: 144,
 		days: [3, 10],
 		fuel: 9.7
-	}
+	},
 	motorhome: {
 		seats: [2, 6],
 		cost: 200,
