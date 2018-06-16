@@ -41,8 +41,11 @@ var app = {
 	},
 	eventListeners: function() {
 		app.vars.body.addEventListener('click', function(e){
-			if(e.target.className = 'btn btn-primary') {
+			console.dir(e.target);
+			if(e.target.className === 'btn btn-primary') {
 				$.fn.pagepiling.moveSectionDown();
+			} else if (e.target.innerHTML === 'GO BACK') {
+				$.fn.pagepiling.moveSectionUp();
 			}
 		}, false)
 	}
