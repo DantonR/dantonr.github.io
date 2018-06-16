@@ -76,13 +76,32 @@
 
 
 // PAGE FOUR
+.page-four__content {
+	justify-content: center;
+}
 .page-4__card {
-	width: 100%;
-	height: 10rem;
+	width: 80%;
+	height: 14rem;
 	background: white;
-	margin-bottom: 2rem;
 	display: flex;
-	padding: 1.5rem;
-	// justify-content: center;
-	align-items: center
+	padding: 0 1.5rem 1.5rem 1.5rem;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 auto 1rem auto;
+}
+.card__img {
+	width: 12rem;
+	height: 12rem;
+}
+
+// PAGE FIVE
+.page-five__card {
+	width: 90%;
+	height: auto;
+	background: white;
+	display: flex;
+	padding: 2rem;
+	// align-items: center;
+	flex-direction: column;
+	margin: 0 auto 1rem auto;
 }
