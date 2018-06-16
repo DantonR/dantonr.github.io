@@ -30,20 +30,23 @@ map.addControl(directions, 'top-left');
 
 // test your own javascript within this function
 var testingJs = function(){
-	console.log(vehicles);
+
 }();
 
 // APP START
 var app = {
 	vars: {
-		mapBoxDiv: document.getElementById('map'),
+		body: document.querySelector('body'),
+		mapBoxDiv: document.getElementById('map')
 	},
 	eventListeners: function() {
-		app.vars.mapBoxDiv.addEventListener('scroll', function(){
-			event.preventDefault();
+		app.vars.body.addEventListener('click', function(e){
+			if(e.target.className = 'btn btn-primary') {
+				$.fn.pagepiling.moveSectionDown();
+			}
 		}, false)
 	}
 } // APP END
 
 console.dir(app.vars.mapBoxDiv);
-// app.eventListeners();
+app.eventListeners();
