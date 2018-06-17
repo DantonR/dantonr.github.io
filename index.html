@@ -97,8 +97,8 @@
 						<h3>Total People: <strong>5</strong></h3>
 						<form class="user-form user-form__days">
 							<h2>How many days will you be traveling?</h2>
-							<input type="date" name="bday" max="1979-12-31" class="user-input user-input__calender"><br>
-							<input type="date" name="bday" min="2000-01-02" class="user-input user-input__calender"><br>
+							<input type="date" name="startDate" min="2018-01-01" max="2020-12-31" class="user-input user-input__calender" id="startDate"><br>
+							<input type="date" name="endDate" min="2018-01-02" max="2020-12-31" class="user-input user-input__calender" id="endDate"><br>
 						</form>
 						<h3>Total Days: <strong>12</strong></h3>
 					</div>
@@ -164,7 +164,7 @@
 							<h4>Days traveling</h4>
 							<p>5</p>
 							<h4>Distance:</h4>
-							<p>327km</p>
+							<p id="distance">327km</p>
 							 <h4>Vehicle:</h4>
 							 <p>2 seater car</p>
 							 <img src="" alt="">
@@ -225,6 +225,9 @@
 
 	<!-- DATA -->
 	<script type="text/javascript" src="js/data.js"></script>
+
+	<!-- INIT APIS -->
+	<script type="text/javascript" src="js/init.js"></script>
 
 	<!-- MY SCRIPT -->
 	<script type="text/javascript" src="js/script.js"></script>
