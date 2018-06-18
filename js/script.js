@@ -67,6 +67,7 @@ var app = {
 	},
 
 	showVehicles: function(seats, days) {
+		console.log(days);
 		// show motorbike
 		if(seats === vehicles.motorbike.seats[0] && days >= vehicles.motorbike.days[0] && days <= vehicles.motorbike.days[1]) {
 			app.vars.bike.style.display = 'block';
