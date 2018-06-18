@@ -26,20 +26,23 @@ var app = {
 		bike: document.getElementById('bike'),
 		smallCar: document.getElementById('smallCar'),
 		largeCar: document.getElementById('largeCar'),
-		motorhome: document.getElementById('motorhome')
+		motorhome: document.getElementById('motorhome'),
+		dates: ['itemOne', 'itemTwo'],
+		daysTraveling: ['a'],
+
+		// date2: new Date(app.vars.endDate.value)
 	},
 	// ** variables end **
 
 
+
 	// **event listeners**
 	eventListeners: function() {
+
 		app.vars.scrollBtns[2].addEventListener('click', function(){
-			var travelingDays = app.getDates(app.vars.startDate, app.vars.endDate);
-
-			app.showVehicles(parseInt(app.vars.seatsNeeded.value), parseInt(travelingDays) );
+			app.getDates(app.vars.startDate, app.vars.endDate);
+			app.showVehicles(parseInt(app.vars.seatsNeeded.value), app.vars.daysTraveling[0] );
 		}, false),
-
-
 
 
 		// *up & down buttons*
@@ -51,23 +54,30 @@ var app = {
 			}
 		}, false)
 		// *up & down buttons end*
+
 	}, // **event listeners end**
 
 
 
 
-	// ** functions **
-	getDates: function(a, b) {
-		console.dir(a.value);
-		splitA = a.value.split("-");
-		splitB = b.value.split("-");
 
-		// console.log(splitB[2] - splitA[2]);
-		return(splitB[2] - splitA[2]);
+
+
+	// ** functions **
+	getDates: function(b, a) {
+		app.vars.dates.splice(0, 2)
+		app.vars.dates.push(a.value, b.value);
+		var date1 = new Date(app.vars.dates[0]);
+		var date2 = new Date(app.vars.dates[1]);
+		var timeDiff = date1.getTime() - date2.getTime();
+		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+		app.vars.daysTraveling.splice(0, 1);
+		app.vars.daysTraveling.push(diffDays);
+		console.log(app.vars.daysTraveling[0]);
 	},
 
+
 	showVehicles: function(seats, days) {
-		console.log(days);
 		// show motorbike
 		if(seats === vehicles.motorbike.seats[0] && days >= vehicles.motorbike.days[0] && days <= vehicles.motorbike.days[1]) {
 			app.vars.bike.style.display = 'block';
@@ -92,12 +102,9 @@ var app = {
 	}
 	// ** functions end **
 
-	// '2018-06-18'
-
 
 } // APP END
 
 app.eventListeners();
 
 // CONSOLE LOGS
-console.dir(app.vars.bike);
