@@ -3,6 +3,10 @@
 @import 'type';
 @import 'pages';
 
+#bike, #smallCar, #largeCar, #motorhome {
+	display: none;
+}
+
 // MAJOR SECTIONS
 .white-bg {
 	background: white;
