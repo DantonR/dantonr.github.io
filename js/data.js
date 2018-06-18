@@ -25,4 +25,4 @@ var vehicles = {
 		days: [2, 15],
 		fuel: 17
 	}
-}
+};

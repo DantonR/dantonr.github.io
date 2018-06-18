@@ -15,7 +15,7 @@ var testingJs = function(){
 
 // APP START
 var app = {
-	// ** variables **
+	// ** variables *
 	vars: {
 		body: document.querySelector('body'),
 		mapBoxDiv: document.getElementById('map'),
@@ -28,13 +28,11 @@ var app = {
 		largeCar: document.getElementById('largeCar'),
 		motorhome: document.getElementById('motorhome'),
 		dates: ['itemOne', 'itemTwo'],
-		daysTraveling: ['a'],
+		daysTraveling: ['a']
 
 		// date2: new Date(app.vars.endDate.value)
 	},
 	// ** variables end **
-
-
 
 	// **event listeners**
 	eventListeners: function() {
@@ -42,30 +40,25 @@ var app = {
 		app.vars.scrollBtns[2].addEventListener('click', function(){
 			app.getDates(app.vars.startDate, app.vars.endDate);
 			app.showVehicles(parseInt(app.vars.seatsNeeded.value), app.vars.daysTraveling[0] );
-		}, false),
+		}, false);
 
 
 		// *up & down buttons*
 		app.vars.body.addEventListener('click', function(e){
+
 			if(e.target.className === 'btn btn-primary') {
 				$.fn.pagepiling.moveSectionDown();
 			} else if (e.target.innerHTML === 'GO BACK') {
 				$.fn.pagepiling.moveSectionUp();
 			}
-		}, false)
+
+		}, false);
 		// *up & down buttons end*
-
 	}, // **event listeners end**
-
-
-
-
-
-
 
 	// ** functions **
 	getDates: function(b, a) {
-		app.vars.dates.splice(0, 2)
+		app.vars.dates.splice(0, 2);
 		app.vars.dates.push(a.value, b.value);
 		var date1 = new Date(app.vars.dates[0]);
 		var date2 = new Date(app.vars.dates[1]);
@@ -75,7 +68,6 @@ var app = {
 		app.vars.daysTraveling.push(diffDays);
 		console.log(app.vars.daysTraveling[0]);
 	},
-
 
 	showVehicles: function(seats, days) {
 		// show motorbike
@@ -103,7 +95,7 @@ var app = {
 	// ** functions end **
 
 
-} // APP END
+}; // APP END
 
 app.eventListeners();
 
