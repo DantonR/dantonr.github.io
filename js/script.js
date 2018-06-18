@@ -29,19 +29,17 @@ var app = {
 		motorhome: document.getElementById('motorhome'),
 		dates: ['itemOne', 'itemTwo'],
 		daysTraveling: ['a']
-
-		// date2: new Date(app.vars.endDate.value)
 	},
 	// ** variables end **
 
 	// **event listeners**
 	eventListeners: function() {
 
+		// * page 3 button press *
 		app.vars.scrollBtns[2].addEventListener('click', function(){
 			app.getDates(app.vars.startDate, app.vars.endDate);
 			app.showVehicles(parseInt(app.vars.seatsNeeded.value), app.vars.daysTraveling[0] );
 		}, false);
-
 
 		// *up & down buttons*
 		app.vars.body.addEventListener('click', function(e){
@@ -51,12 +49,14 @@ var app = {
 			} else if (e.target.innerHTML === 'GO BACK') {
 				$.fn.pagepiling.moveSectionUp();
 			}
-
 		}, false);
-		// *up & down buttons end*
+
+
 	}, // **event listeners end**
 
 	// ** functions **
+
+	// take the dates given and calculate the amount of days traveling
 	getDates: function(b, a) {
 		app.vars.dates.splice(0, 2);
 		app.vars.dates.push(a.value, b.value);
@@ -67,32 +67,39 @@ var app = {
 		app.vars.daysTraveling.splice(0, 1);
 		app.vars.daysTraveling.push(diffDays);
 		console.log(app.vars.daysTraveling[0]);
-	},
+	}, // get dates end
 
+	// show or hide vehicles based on seats needed and days traveling
 	showVehicles: function(seats, days) {
-		// show motorbike
+		// show/hide motorbike
 		if(seats === vehicles.motorbike.seats[0] && days >= vehicles.motorbike.days[0] && days <= vehicles.motorbike.days[1]) {
 			app.vars.bike.style.display = 'block';
 		} else {
 			app.vars.bike.style.display = 'none';
 		}
+		// show/hide small car
 		if(seats >= vehicles.smallCar.seats[0] &&  seats <= vehicles.smallCar.seats[1] && days >= vehicles.smallCar.days[0] && days <= vehicles.smallCar.days[1]) {
 			app.vars.smallCar.style.display = 'block';
 		} else {
 			app.vars.smallCar.style.display = 'none';
 		}
+		// show/hide large car
 		if(seats >= vehicles.largeCar.seats[0] &&  seats <= vehicles.largeCar.seats[1] && days >= vehicles.largeCar.days[0] && days <= vehicles.largeCar.days[1]) {
 			app.vars.largeCar.style.display = 'block';
 		} else {
 			app.vars.largeCar.style.display = 'none';
 		}
+		// show/hide motorhome
 		if(seats >= vehicles.motorhome.seats[0] &&  seats <= vehicles.motorhome.seats[1] && days >= vehicles.motorhome.days[0] && days <= vehicles.motorhome.days[1]) {
 			app.vars.motorhome.style.display = 'block';
 		} else {
 			app.vars.motorhome.style.display = 'none';
 		}
-	}
+	} // show vehicles end
+
 	// ** functions end **
+
+
 
 
 }; // APP END
