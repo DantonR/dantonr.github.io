@@ -85,13 +85,23 @@
 }
 .page-4__card {
 	width: 80%;
-	height: 14rem;
+	height: auto;
 	background: white;
 	display: flex;
 	padding: 0 1.5rem 1.5rem 1.5rem;
 	align-items: center;
 	flex-direction: column;
+	justify-content: center;
 	margin: 0 auto 1rem auto;
+	transition: all 0.4s;
+}
+.page-4__card__inner {
+	height: 300px;
+	background: white;
+	width: 100%;
+}
+.page-4__card--large {
+	height: 20rem;
 }
 .card__img {
 	width: 12rem;
