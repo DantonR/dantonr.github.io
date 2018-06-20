@@ -3,9 +3,9 @@
 @import 'type';
 @import 'pages';
 
-#bike, #smallCar, #largeCar, #motorhome {
-	display: none;
-}
+// #bike, #smallCar, #largeCar, #motorhome {
+// 	display: none;
+// }
 
 // MAJOR SECTIONS
 .white-bg {
@@ -85,23 +85,29 @@
 }
 .page-4__card {
 	width: 80%;
-	height: auto;
+	height: 100px;
 	background: white;
 	display: flex;
 	padding: 0 1.5rem 1.5rem 1.5rem;
 	align-items: center;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	margin: 0 auto 1rem auto;
 	transition: all 0.4s;
 }
 .page-4__card__inner {
-	height: 300px;
+	height: 800px;
 	background: white;
 	width: 100%;
 }
 .page-4__card--large {
-	height: 20rem;
+	height: 40%;
+}
+.page-4__card--hidden {
+	display: none;
+}
+.page-4__card--transparent {
+	opacity: 0;
 }
 .card__img {
 	width: 12rem;

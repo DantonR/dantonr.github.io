@@ -82,6 +82,21 @@ var app = {
 			app.showVehicles(parseInt(v.seatsNeeded.value), v.daysTraveling[0] );
 		}, false);
 
+		// * click on card *
+		v.pageFourDiv.addEventListener('click', function(e){
+			// if (e.target.classList[0]=== 'page-4__card') {
+			// 	// e.target.className = 'page-4__card page-4__card--large';
+			// 	e.target.classList.toggle('page-4__card--large');
+			// 	e.target.nextElementSibling.classList.remove('page-4__card--large');
+			// 	e.target.nextElementSibling.classList.toggle('page-4__card--transparent');
+			// 	e.target.nextElementSibling.nextElementSibling.classList.remove('page-4__card--large');
+			// 	e.target.nextElementSibling.nextElementSibling.classList.toggle('page-4__card--transparent');
+			// 	console.dir(e.target);
+			// } else {
+			// 	console.log(e.target.classList[0]);
+			// }
+		});
+
 		// * page 4 button press *
 		v.scrollBtns[3].addEventListener('click', function(){
 			// function that displays the data based on what the user inputs in the previous pages
@@ -123,27 +138,31 @@ var app = {
 		var v = app.vars;
 		// show/hide motorbike
 		if(seats === vehicles.motorbike.seats[0] && days >= vehicles.motorbike.days[0] && days <= vehicles.motorbike.days[1]) {
-			v.bike.style.display = 'flex';
+			v.bike.classList.remove('page-4__card--hidden');
+			v.bike.classList.add('page-4__card');
 		} else {
-			v.bike.style.display = 'none';
+			v.bike.classList.add('page-4__card--hidden');
 		}
 		// show/hide small car
 		if(seats >= vehicles.smallCar.seats[0] &&  seats <= vehicles.smallCar.seats[1] && days >= vehicles.smallCar.days[0] && days <= vehicles.smallCar.days[1]) {
-			v.smallCar.style.display = 'flex';
+			v.smallCar.classList.remove('page-4__card--hidden');
+			v.smallCar.classList.add('page-4__card');
 		} else {
-			v.smallCar.style.display = 'none';
+			v.smallCar.classList.add('page-4__card--hidden');
 		}
 		// show/hide large car
 		if(seats >= vehicles.largeCar.seats[0] &&  seats <= vehicles.largeCar.seats[1] && days >= vehicles.largeCar.days[0] && days <= vehicles.largeCar.days[1]) {
-			v.largeCar.style.display = 'flex';
+			v.largeCar.classList.remove('page-4__card--hidden');
+			v.largeCar.classList.add('page-4__card');
 		} else {
-			v.largeCar.style.display = 'none';
+			v.largeCar.classList.add('page-4__card--hidden');
 		}
 		// show/hide motorhome
 		if(seats >= vehicles.motorhome.seats[0] &&  seats <= vehicles.motorhome.seats[1] && days >= vehicles.motorhome.days[0] && days <= vehicles.motorhome.days[1]) {
-			v.motorhome.style.display = 'flex';
+			v.largeCar.classList.remove('page-4__card--hidden');
+			v.motorhome.classList.add('page-4__card');
 		} else {
-			v.motorhome.style.display = 'none';
+			v.motorhome.classList.add('page-4__card--hidden');
 		}
 	}, // show vehicles end
 
@@ -180,12 +199,13 @@ app.eventListeners();
 var testingJs = function(){
 	var v = app.vars;
 
-	$(".page-four__content").on('click', 'div', function(){
-		$(this).toggleClass('page-4__card--large').siblings().removeClass('page-4__card--large');
+	$(".page-four__content").on('click', '.page-4__card', function(){
+		$(this).toggleClass('page-4__card--large').siblings().toggleClass('page-4__card--transparent');
+		setTimout($(this).siblings().toggleClass('page-4__card--hidden'), 200);
 		v.selectedVehicle.splice(0, 1);
 		v.selectedVehicle.push(this.id);
-		console.dir(v.selectedVehicle);
+		// console.dir(v.selectedVehicle);
 
-	})
+	});
 
 }();
