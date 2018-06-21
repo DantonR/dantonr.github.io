@@ -93,7 +93,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	margin: 0 auto 1rem auto;
-	transition: all 0.4s;
+	transition: opacity 0.4s, height 0.8s;
 }
 .page-4__card__inner {
 	height: 800px;
@@ -101,13 +101,14 @@
 	width: 100%;
 }
 .page-4__card--large {
-	height: 40%;
+	height: 70%;
 }
 .page-4__card--hidden {
 	display: none;
 }
 .page-4__card--transparent {
 	opacity: 0;
+	height: 0;
 }
 .card__img {
 	width: 12rem;
