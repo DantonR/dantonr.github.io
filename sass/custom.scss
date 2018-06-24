@@ -80,20 +80,30 @@
 
 
 // PAGE FOUR
+.margin-before {
+	margin-top: 5rem;
+}
+.center-align {
+	align-self: center;
+}
+.right-align {
+	float: right;
+}
 .page-four__content {
 	justify-content: center;
 }
 .page-4__card {
 	width: 80%;
-	height: 100px;
+	height: 27%;
 	background: white;
 	display: flex;
 	padding: 0 1.5rem 1.5rem 1.5rem;
-	align-items: center;
+	// align-items: flex-start;
 	flex-direction: column;
 	justify-content: flex-start;
 	margin: 0 auto 1rem auto;
-	transition: opacity 0.4s, height 0.8s;
+	transition: opacity 0.2s, height 0.4s;
+	overflow: hidden;
 }
 .page-4__card__inner {
 	height: 800px;
@@ -101,7 +111,7 @@
 	width: 100%;
 }
 .page-4__card--large {
-	height: 70%;
+	height: 84vh;
 }
 .page-4__card--hidden {
 	display: none;
@@ -109,6 +119,8 @@
 .page-4__card--transparent {
 	opacity: 0;
 	height: 0;
+	margin-bottom: 0;
+	padding-bottom: 0;
 }
 .card__img {
 	width: 12rem;

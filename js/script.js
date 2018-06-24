@@ -159,7 +159,7 @@ var app = {
 		}
 		// show/hide motorhome
 		if(seats >= vehicles.motorhome.seats[0] &&  seats <= vehicles.motorhome.seats[1] && days >= vehicles.motorhome.days[0] && days <= vehicles.motorhome.days[1]) {
-			v.largeCar.classList.remove('page-4__card--hidden');
+			v.motorhome.classList.remove('page-4__card--hidden');
 			v.motorhome.classList.add('page-4__card');
 		} else {
 			v.motorhome.classList.add('page-4__card--hidden');
@@ -201,7 +201,6 @@ var testingJs = function(){
 
 	$(".page-four__content").on('click', '.page-4__card', function(){
 		$(this).toggleClass('page-4__card--large').siblings().toggleClass('page-4__card--transparent');
-		setTimout($(this).siblings().toggleClass('page-4__card--hidden'), 200);
 		v.selectedVehicle.splice(0, 1);
 		v.selectedVehicle.push(this.id);
 		// console.dir(v.selectedVehicle);
