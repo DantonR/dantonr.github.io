@@ -1,6 +1,4 @@
 var vehicles = {
-	vehiclesAmount: 4,
-
 	motorbike: {
 		seats: [1, 1],
 		cost: 109,

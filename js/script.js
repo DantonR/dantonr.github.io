@@ -94,6 +94,7 @@ var app = {
 
 		// *up & down buttons*
 		v.body.addEventListener('click', function(e){
+			console.dir(e.target);
 
 			if(e.target.className === 'btn btn-primary') {
 				$.fn.pagepiling.moveSectionDown();
@@ -101,7 +102,6 @@ var app = {
 				$.fn.pagepiling.moveSectionUp();
 			}
 		}, false);
-
 
 	}, // event listener ending
 
@@ -175,6 +175,8 @@ var app = {
 //  	   CALLING
 // -------------------------
 app.eventListeners();
+	console.dir(vehicles.motorhome.seats);
+
 
 
 // -------------------------
@@ -195,4 +197,21 @@ var testingJs = function(){
 
 	});
 
+
+
+	function compareData(obj, days, seats){
+		if(seats >= vehicles.obj.seats[0] &&  seats <= vehicles.obj.seats[1] && days >= vehicles.obj.days[0] && days <= vehicles.obj.days[1]) {
+			var newDiv = 
+		}
+	};
+
+
+
+
+	// var motorhome = $('#motorhome')[0].children[2]
+	// var fuelM = motorhome.children[4].children[0]
+	// var vhireM = motorhome.children[5].children[0]
+	// var totelM = motorhome.children[7].children[0]
+	//
+	// .text()
 }();
