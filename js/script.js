@@ -5,7 +5,7 @@
 directions.on('route', function(directions){
 	app.vars.mapboxDistance.push(directions.route["0"].distance / 1000);
 });
-
+console.log($('.btn-primary'));
 // APP START
 var app = {
 	// --------------------------------
@@ -98,10 +98,9 @@ var app = {
 		});
 
 		// * page 4 button press *
-		v.scrollBtns[3].addEventListener('click', function(){
-			// function that displays the data based on what the user inputs in the previous pages
-			app.displayInfo(v.startDate, v.endDate, v.daysTraveling[0], v.mapboxDistance[0], v.selectedVehicle[0]);
-		}, false);
+		// v.scrollBtns[3].addEventListener('click', function(){
+		// 	app.displayInfo(v.startDate, v.endDate, v.daysTraveling[0], v.mapboxDistance[0], v.selectedVehicle[0]);
+		// }, false);
 
 		// *up & down buttons*
 		v.body.addEventListener('click', function(e){
