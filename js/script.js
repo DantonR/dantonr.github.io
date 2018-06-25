@@ -83,19 +83,9 @@ var app = {
 		}, false);
 
 		// * click on card *
-		v.pageFourDiv.addEventListener('click', function(e){
-			// if (e.target.classList[0]=== 'page-4__card') {
-			// 	// e.target.className = 'page-4__card page-4__card--large';
-			// 	e.target.classList.toggle('page-4__card--large');
-			// 	e.target.nextElementSibling.classList.remove('page-4__card--large');
-			// 	e.target.nextElementSibling.classList.toggle('page-4__card--transparent');
-			// 	e.target.nextElementSibling.nextElementSibling.classList.remove('page-4__card--large');
-			// 	e.target.nextElementSibling.nextElementSibling.classList.toggle('page-4__card--transparent');
-			// 	console.dir(e.target);
-			// } else {
-			// 	console.log(e.target.classList[0]);
-			// }
-		});
+		// v.pageFourDiv.addEventListener('click', function(e){
+		// 	console.dir(e.target);
+		// });
 
 		// * page 4 button press *
 		// v.scrollBtns[3].addEventListener('click', function(){
@@ -190,7 +180,6 @@ app.eventListeners();
 // -------------------------
 //     CONSOLE LOGS
 // -------------------------
-
 
 // -------------------------
 //          TEST JS
