@@ -79,18 +79,9 @@ var app = {
 			// run the function getDates, taking the date inputs as arguments
 			app.getDates(v.startDate, v.endDate);
 			// function that show/hides vehicles depending on the seats needed and amount of days traveling
-			app.showVehicles(parseInt(v.seatsNeeded.value), v.daysTraveling[0] );
+			// app.showVehicles(parseInt(v.seatsNeeded.value), v.daysTraveling[0] );
 		}, false);
 
-		// * click on card *
-		// v.pageFourDiv.addEventListener('click', function(e){
-		// 	console.dir(e.target);
-		// });
-
-		// * page 4 button press *
-		// v.scrollBtns[3].addEventListener('click', function(){
-		// 	app.displayInfo(v.startDate, v.endDate, v.daysTraveling[0], v.mapboxDistance[0], v.selectedVehicle[0]);
-		// }, false);
 
 		// *up & down buttons*
 		v.body.addEventListener('click', function(e){
@@ -198,11 +189,34 @@ var testingJs = function(){
 	});
 
 
+	$('#scrollBtnThree').click(function(){
+		app.getDates(v.startDate, v.endDate);
+		console.log(v.seatsNeeded.value);
+		compareData(vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0] )
+	});
 
-	function compareData(obj, days, seats){
-		if(seats >= vehicles.obj.seats[0] &&  seats <= vehicles.obj.seats[1] && days >= vehicles.obj.days[0] && days <= vehicles.obj.days[1]) {
-			var newDiv = 
-		}
+
+	function compareData(obj, seats, days){
+		console.log(seats);
+		// if(seats >= vehicles.obj.seats[0] &&  seats <= vehicles.obj.seats[1] && days >= vehicles.obj.days[0] && days <= vehicles.obj.days[1]) {
+			var newVehicle = '<div id=" '  + obj + ' ">';
+			newVehicle += 		'<img class="card__img center-align" src="img/' + obj + '.png" alt="Two seater car" />';
+			newVehicle += 		'<h2 class="center-align green">' + obj + '</h2>';
+			newVehicle += 		'<div class="page-4__card">';
+			newVehicle += 			'<p class="center-align">Lorem ipsum dolor sit</p>';
+			newVehicle += 			'<p class="light">For <strong>' + obj.seats[0] + '</strong> Person</p>';
+			newVehicle += 			'<p class="light"><strong>' + obj.cost + '</strong> per day</p>';
+			newVehicle += 			'<p class="margin-before green"><strong>Costs for your trip:</strong></p>';
+			newVehicle += 			'<p class="light">Fuel (approx): <span class="right-align bold">$x</span></p>';
+			newVehicle += 			'<p class="light">Vehicle hire<span class="right-align bold">$x</span></p>';
+			newVehicle += 			'<hr>';
+			newVehicle += 			'<p>Total<span class="right-align">$x</span></p>';
+			newVehicle += 		'</div>';
+			newVehicle += 		'<button class="btn btn-tertiary center-align confirm" id="smallCarBtn">Confirm</button>';
+			newVehicle += 	'</div>';
+
+			console.log(app.vars.pageFourDiv.innerHTML);
+		// }
 	};
 
 
