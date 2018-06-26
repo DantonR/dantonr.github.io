@@ -78,8 +78,6 @@ var app = {
 		v.scrollBtns[2].addEventListener('click', function(){
 			// run the function getDates, taking the date inputs as arguments
 			app.getDates(v.startDate, v.endDate);
-			// function that show/hides vehicles depending on the seats needed and amount of days traveling
-			// app.showVehicles(parseInt(v.seatsNeeded.value), v.daysTraveling[0] );
 		}, false);
 
 
@@ -113,39 +111,6 @@ var app = {
 		app.vars.daysTraveling.push(diffDays);
 	}, // get dates end
 
-	// show or hide vehicles based on seats needed and days traveling
-	showVehicles: function(seats, days) {
-		var v = app.vars;
-		// show/hide motorbike
-		if(seats === vehicles.motorbike.seats[0] && days >= vehicles.motorbike.days[0] && days <= vehicles.motorbike.days[1]) {
-			v.bike.classList.remove('page-4__card--hidden');
-			v.bike.classList.add('page-4__card');
-		} else {
-			v.bike.classList.add('page-4__card--hidden');
-		}
-		// show/hide small car
-		if(seats >= vehicles.smallCar.seats[0] &&  seats <= vehicles.smallCar.seats[1] && days >= vehicles.smallCar.days[0] && days <= vehicles.smallCar.days[1]) {
-			v.smallCar.classList.remove('page-4__card--hidden');
-			v.smallCar.classList.add('page-4__card');
-		} else {
-			v.smallCar.classList.add('page-4__card--hidden');
-		}
-		// show/hide large car
-		if(seats >= vehicles.largeCar.seats[0] &&  seats <= vehicles.largeCar.seats[1] && days >= vehicles.largeCar.days[0] && days <= vehicles.largeCar.days[1]) {
-			v.largeCar.classList.remove('page-4__card--hidden');
-			v.largeCar.classList.add('page-4__card');
-		} else {
-			v.largeCar.classList.add('page-4__card--hidden');
-		}
-		// show/hide motorhome
-		if(seats >= vehicles.motorhome.seats[0] &&  seats <= vehicles.motorhome.seats[1] && days >= vehicles.motorhome.days[0] && days <= vehicles.motorhome.days[1]) {
-			v.motorhome.classList.remove('page-4__card--hidden');
-			v.motorhome.classList.add('page-4__card');
-		} else {
-			v.motorhome.classList.add('page-4__card--hidden');
-		}
-	}, // show vehicles end
-
 	// change the info on the last page based on the users input + data
 	displayInfo: function(pickup, dropoff, days, distance, vehicle) {
 		var v = app.vars;
@@ -173,7 +138,6 @@ app.eventListeners();
 // -------------------------
 //     CONSOLE LOGS
 // -------------------------
-
 // -------------------------
 //          TEST JS
 // -------------------------
@@ -190,37 +154,52 @@ var testingJs = function(){
 
 
 	$('#scrollBtnThree').click(function(){
-		app.getDates(v.startDate, v.endDate);
 		console.log(v.seatsNeeded.value);
-		compareData(vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0] )
+		app.getDates(v.startDate, v.endDate);
+		compareData('motorbike', vehicles.motorbike, parseInt(v.seatsNeeded.value), v.daysTraveling[0] )
+		compareData('smallCar', vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0] )
+		compareData('largeCar', vehicles.largeCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0] )
+		compareData('motorhome', vehicles.motorhome, parseInt(v.seatsNeeded.value), v.daysTraveling[0] )
 	});
 
 
-	function compareData(obj, seats, days){
-		console.log(seats);
-		// if(seats >= vehicles.obj.seats[0] &&  seats <= vehicles.obj.seats[1] && days >= vehicles.obj.days[0] && days <= vehicles.obj.days[1]) {
-			var newVehicle = '<div id=" '  + obj + ' ">';
-			newVehicle += 		'<img class="card__img center-align" src="img/' + obj + '.png" alt="Two seater car" />';
-			newVehicle += 		'<h2 class="center-align green">' + obj + '</h2>';
-			newVehicle += 		'<div class="page-4__card">';
+	function compareData(objName, obj, seats, days){
+		var p4 = app.vars.pageFourDiv;
+		console.log(seats[0]);
+		console.log(days);
+		console.dir(obj);
+		if(seats >= obj.seats[0] &&  seats <= obj.seats[1] && days >= obj.days[0] && days <= obj.days[1]) {
+			var newVehicle = '<div class="page-4__card" id=" '  + objName + ' ">';
+			newVehicle += 		'<img class="card__img center-align" src="img/' + objName + '.png" alt="Two seater car" />';
+			newVehicle += 		'<h2 class="center-align green">' + objName + '</h2>';
+			newVehicle += 		'<div>';
 			newVehicle += 			'<p class="center-align">Lorem ipsum dolor sit</p>';
 			newVehicle += 			'<p class="light">For <strong>' + obj.seats[0] + '</strong> Person</p>';
-			newVehicle += 			'<p class="light"><strong>' + obj.cost + '</strong> per day</p>';
+			newVehicle += 			'<p class="light"><strong>$' + obj.cost + '</strong> per day</p>';
 			newVehicle += 			'<p class="margin-before green"><strong>Costs for your trip:</strong></p>';
 			newVehicle += 			'<p class="light">Fuel (approx): <span class="right-align bold">$x</span></p>';
-			newVehicle += 			'<p class="light">Vehicle hire<span class="right-align bold">$x</span></p>';
+			newVehicle += 			'<p class="light">Vehicle hire<span class="right-align bold">$' + days * obj.cost + '</span></p>';
 			newVehicle += 			'<hr>';
 			newVehicle += 			'<p>Total<span class="right-align">$x</span></p>';
 			newVehicle += 		'</div>';
-			newVehicle += 		'<button class="btn btn-tertiary center-align confirm" id="smallCarBtn">Confirm</button>';
+			newVehicle += 		'<button class="btn btn-tertiary center-align confirm" id=" ' + objName + 'Btn ">Confirm</button>';
 			newVehicle += 	'</div>';
 
+			console.log(newVehicle);
 			console.log(app.vars.pageFourDiv.innerHTML);
-		// }
+			var choose = document.getElementById('choose');
+			choose.insertAdjacentHTML('afterend', newVehicle);
+		}
 	};
 
+	confirmVehicle('motorhome')
 
-
+	function confirmVehicle(button) {
+		var confirmBtn = document.getElementById(button);
+		confirmBtn.addEventListener('click', function(){
+			console.log(button);
+		}, false)
+	};
 
 	// var motorhome = $('#motorhome')[0].children[2]
 	// var fuelM = motorhome.children[4].children[0]
