@@ -152,11 +152,16 @@
 // PAGE FIVE
 .page-five__card {
 	width: 90%;
-	height: auto;
+	height: 90vh;
 	background: white;
 	display: flex;
 	padding: 2rem;
 	// align-items: center;
 	flex-direction: column;
 	margin: 0 auto 1rem auto;
+	transform: translateY(1000px);
+	transition: all 0.6s ease-in-out;
+}
+.page-five__card--show {
+	transform: translateY(0px);
 }
