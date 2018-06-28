@@ -3,7 +3,17 @@
 
 // when the user inputs locations into the mapbox fields, push the distance into an array
 directions.on('route', function(directions){
-	app.vars.mapboxDistance.push(directions.route["0"].distance / 1000);
+	var v = app.vars;
+	v.mapboxDistance.splice(0, 1);
+	v.mapboxDistance.push(directions.route["0"].distance / 1000);
+	// take the value the user inputs to mapbox, and get the first word (origin & desitination)
+	v.mapboxOriginVal.splice(0, 1);
+	v.mapboxDestinationVal.splice(0, 1);
+	origin = v.mapboxOrigin.firstChild.children[1].value.split(',');
+	v.mapboxOriginVal.push(origin[0]);
+	destination = v.mapboxDestination.firstChild.children[1].value.split(',');
+	v.mapboxDestinationVal.push(destination[0]);
+	console.dir(v.mapboxDistance[0]);
 });
 // APP START
 var app = {
@@ -25,7 +35,14 @@ var app = {
 		daysTraveling: ['a'],
 
 		// array containing map data
-		mapboxDistance: [],
+		mapboxDistance: ['a'],
+
+		//mapbox inputs
+		mapboxOrigin: document.getElementById('mapbox-directions-origin-input'),
+		mapboxDestination: document.getElementById('mapbox-directions-destination-input'),
+		// mapbox input values
+		mapboxOriginVal: ['a'],
+		mapboxDestinationVal: ['a'],
 
 		// array containing selected vehicle
 		selectedVehicle: ['a'],
@@ -140,6 +157,7 @@ app.eventListeners();
 var testingJs = function(){
 	var v = app.vars;
 
+
 	var page = $(".page-four__content")[0]
 	page.addEventListener('click', catTest, false);
 
@@ -153,6 +171,7 @@ var testingJs = function(){
 		v.selectedVehicle.splice(0, 1);
 		v.selectedVehicle.push(this.id);
 	});
+
 
 
 	// show the vehicles depending on inputs
@@ -180,6 +199,8 @@ var testingJs = function(){
 			p.removeChild(p.childNodes[2]);
 		}
 	};
+
+
 
 	// take the data given and create vehicles based on that
 	function compareData(objName, obj, seats, days, displayName){
@@ -216,9 +237,9 @@ var testingJs = function(){
 
 	// the confirm buttons on the expanded vehicle options
 	chooseVehicle('#motorbikeBtn', 'Motorbike', vehicles.motorbike);
-	chooseVehicle('#smallCarBtn', 'Small Car');
-	chooseVehicle('#largeCarBtn', 'Large Car');
-	chooseVehicle('#motorhomeBtn', 'Motorhome');
+	chooseVehicle('#smallCarBtn', 'Small Car', vehicles.smallCar);
+	chooseVehicle('#largeCarBtn', 'Large Car', vehicles.largeCar);
+	chooseVehicle('#motorhomeBtn', 'Motorhome', vehicles.motorhome);
 
 
 	// show the final page data
@@ -229,7 +250,11 @@ var testingJs = function(){
 				app.vars.pageFiveCard.style.transform = 'translateY(20px)';
 			}, 700);
 			v.infoVehicle.innerHTML = vehicleName;
-			v.infoCost.innerHTML = dataItem.cost;
+			v.infoCost.innerHTML = '$' + dataItem.cost * v.daysTraveling;
+			v.infoPickup.innerHTML = v.mapboxOriginVal[0] + ' on the ' + v.startDate.value;
+			v.infoDropoff.innerHTML = v.mapboxDestinationVal[0] + ' on the ' + v.endDate.value;
+			v.infoDays.innerHTML = v.daysTraveling[0];
+			v.infoDistance.innerHTML = Math.ceil(v.mapboxDistance[0]) + ' km';
 		});
 	};
 }();
