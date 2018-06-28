@@ -92,8 +92,7 @@ var app = {
 		v.scrollBtns[2].addEventListener('click', function(){
 			// run the function getDates, taking the date inputs as arguments
 			console.log(v.startDate.value + ' ' + v.endDate.value);
-			app.getDates(v.startDate.value, v.endDate.value);
-			console.log(v.daysTraveling);
+			app.getDates(v.startDate, v.endDate);
 		}, false);
 
 
@@ -124,9 +123,9 @@ var app = {
 
 	// take the dates given and calculate the amount of days traveling
 	getDates: function(b, a) {
-		console.log(b + ' ' + a);
 		app.vars.dates.splice(0, 2);
 		app.vars.dates.push(a.value, b.value);
+		console.dir(app.vars.dates[0]);
 		var date1 = new Date(app.vars.dates[0]);
 		var date2 = new Date(app.vars.dates[1]);
 		var timeDiff = date1.getTime() - date2.getTime();
