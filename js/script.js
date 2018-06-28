@@ -26,8 +26,8 @@ var app = {
 		scrollBtns: document.querySelectorAll('.btn-primary'),
 
 		// input fields
-		startDate: document.getElementById('startDate'),
-		endDate: document.getElementById('endDate'),
+		startDate: document.getElementById('pickDate'),
+		endDate: document.getElementById('dropDate'),
 		seatsNeeded: document.getElementById('seatsNeeded'),
 
 		// the arrays that will contain the dates & days traveling
@@ -91,8 +91,18 @@ var app = {
 		// * page 3 button press *
 		v.scrollBtns[2].addEventListener('click', function(){
 			// run the function getDates, taking the date inputs as arguments
-			app.getDates(v.startDate, v.endDate);
+			console.log(v.startDate.value + ' ' + v.endDate.value);
+			app.getDates(v.startDate.value, v.endDate.value);
+			console.log(v.daysTraveling);
 		}, false);
+
+
+		// expand the vehicle div when clicked on, and hide the others
+		$(".page-four__content").on('click', '.page-4__card', function(){
+			$(this).toggleClass('page-4__card--large').siblings().toggleClass('page-4__card--transparent');
+			v.selectedVehicle.splice(0, 1);
+			v.selectedVehicle.push(this.id);
+		});
 
 
 		// *up & down buttons*
@@ -114,6 +124,7 @@ var app = {
 
 	// take the dates given and calculate the amount of days traveling
 	getDates: function(b, a) {
+		console.log(b + ' ' + a);
 		app.vars.dates.splice(0, 2);
 		app.vars.dates.push(a.value, b.value);
 		var date1 = new Date(app.vars.dates[0]);
@@ -165,12 +176,6 @@ var testingJs = function(){
 		console.dir(e.target);
 	}
 
-	// expand the vehicle div when clicked on, and hide the others
-	$(".page-four__content").on('click', '.page-4__card', function(){
-		$(this).toggleClass('page-4__card--large').siblings().toggleClass('page-4__card--transparent');
-		v.selectedVehicle.splice(0, 1);
-		v.selectedVehicle.push(this.id);
-	});
 
 
 

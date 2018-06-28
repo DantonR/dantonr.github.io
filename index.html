@@ -13,6 +13,9 @@
 	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
 
+	<!-- JQUERY UI -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 	<!-- PAGEPILING -->
 	<link rel="stylesheet" type="text/css" href="css/jquery.pagepiling.css" />
 
@@ -96,11 +99,10 @@
 							<br />
 						</form>
 						<!-- <h3>Total People: <strong>5</strong></h3> -->
-						<form class="user-form user-form__days">
-							<h2>How many days will you be traveling?</h2>
-							<input type="date" name="startDate" min="2018-01-01" max="2020-12-31" class="user-input user-input__calender"  id="startDate"><br>
-							<input type="date" name="endDate" min="2018-01-02" max="2020-12-31" class="user-input user-input__calender" id="endDate"><br>
-						</form>
+						<h2>How many days will you be traveling?</h2>
+
+						<input type="text" id="pickDate" name="pickDate" class="user-input user-input__calender" placeholder="Pickup date">
+						<input type="text" id="dropDate" name="dropDate" class="user-input user-input__calender" placeholder="Dropoff date">
 						<!-- <h3>Total Days: <strong>12</strong></h3> -->
 					</div>
 					<div class="col-md-12 footer">
@@ -195,6 +197,9 @@
 
 	<!-- JQUERY -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+	<!-- JQ UI -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- PAGEPILING -->
 	<script type="text/javascript" src="js/jquery.pagepiling.js"></script>
