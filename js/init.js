@@ -9,6 +9,7 @@
 $('#pagepiling').pagepiling({
 	verticalCentered: false,
 	scrollingSpeed: 50,
+	navigation: false
 	// normalScrollElements: '#map .mapboxgl-map, .mapboxgl-control-container'
 });
 $.fn.pagepiling.setAllowScrolling(false);
@@ -23,8 +24,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZGFudG9uciIsImEiOiJjamk5d3EzbGsxMWJvM2twYXF0a
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/mapbox/streets-v10',
-center: [-77.035, 38.875],
-zoom: 15
+center: [172, -41.279],
+zoom: 4
 });
 
 var directions = new MapboxDirections({
@@ -81,7 +82,5 @@ function compareDates(startDate, endDate) {
 
 
 // These three lines go inside your funation to check the number of days
-var pickDate = $('#pickDate').datepicker('getDate');
-var dropDate = $('#dropDate').datepicker('getDate');
-compareDates(pickDate, dropDate)
+
 //

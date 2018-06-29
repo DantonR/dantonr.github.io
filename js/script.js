@@ -13,8 +13,12 @@ directions.on('route', function(directions){
 	v.mapboxOriginVal.push(origin[0]);
 	destination = v.mapboxDestination.firstChild.children[1].value.split(',');
 	v.mapboxDestinationVal.push(destination[0]);
-	console.dir(v.mapboxDistance[0]);
+	if (typeof v.mapboxDistance[0] === 'number') {
+		console.log('working');
+	}
 });
+
+
 // APP START
 var app = {
 	// --------------------------------
@@ -81,20 +85,42 @@ var app = {
 		var v = app.vars;
 		// * home page button press
 		v.scrollBtns[0].addEventListener('click', function(){
+			$.fn.pagepiling.moveSectionDown();
 		}, false);
 
 		// * page 2 button press *
 		v.scrollBtns[1].addEventListener('click', function(){
-
+			$.fn.pagepiling.moveSectionDown();
 		}, false);
 
 		// * page 3 button press *
 		v.scrollBtns[2].addEventListener('click', function(){
-			// run the function getDates, taking the date inputs as arguments
-			console.log(v.startDate.value + ' ' + v.endDate.value);
 			app.getDates(v.startDate, v.endDate);
+			app.compareData('motorbike', vehicles.motorbike, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorbike' );
+			app.compareData('smallCar', vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Small Car' );
+			app.compareData('largeCar', vehicles.largeCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Large Car' );
+			app.compareData('motorhome', vehicles.motorhome, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorhome'  );
+
+			// run the function getDates, taking the date inputs as arguments
+			if (v.seatsNeeded.value === '') {
+				console.log('Please specify the seats needed');
+			} else if(v.daysTraveling[0] > 15) {
+				console.log('Max days is 15');
+			} else if (v.daysTraveling[0] > 15 && v.seatsNeeded.value === '') {
+				console.log('Please specify seats needed and dont blah');
+			} else if (v.pageFourDiv.children.length === 1) {
+				console.log('There are no vehicle for this travel time');
+			} else {
+				$.fn.pagepiling.moveSectionDown();
+			}
+
 		}, false);
 
+		// * page 4 individual vehicle buttons *
+		app.chooseVehicle('#motorbikeBtn', 'Motorbike', vehicles.motorbike);
+		app.chooseVehicle('#smallCarBtn', 'Small Car', vehicles.smallCar);
+		app.chooseVehicle('#largeCarBtn', 'Large Car', vehicles.largeCar);
+		app.chooseVehicle('#motorhomeBtn', 'Motorhome', vehicles.motorhome);
 
 		// expand the vehicle div when clicked on, and hide the others
 		$(".page-four__content").on('click', '.page-4__card', function(){
@@ -103,18 +129,17 @@ var app = {
 			v.selectedVehicle.push(this.id);
 		});
 
-
-		// *up & down buttons*
+		// *go back buttons*
 		v.body.addEventListener('click', function(e){
-
-			if(e.target.className === 'btn btn-primary') {
-				$.fn.pagepiling.moveSectionDown();
-			} else if (e.target.innerHTML === 'GO BACK') {
+			if (e.target.innerHTML === 'GO BACK') {
 				$.fn.pagepiling.moveSectionUp();
 			}
 		}, false);
-
 	}, // event listener ending
+
+
+
+
 
 
 	// -------------------------
@@ -123,15 +148,18 @@ var app = {
 
 	// take the dates given and calculate the amount of days traveling
 	getDates: function(b, a) {
-		app.vars.dates.splice(0, 2);
-		app.vars.dates.push(a.value, b.value);
-		console.dir(app.vars.dates[0]);
-		var date1 = new Date(app.vars.dates[0]);
-		var date2 = new Date(app.vars.dates[1]);
+		var v = app.vars
+		var pickDate = $('#pickDate').datepicker('getDate');
+		var dropDate = $('#dropDate').datepicker('getDate');
+		compareDates(pickDate, dropDate);
+		v.dates.splice(0, 2);
+		v.dates.push(pickDate, dropDate);
+		var date1 = new Date(v.dates[0]);
+		var date2 = new Date(v.dates[1]);
 		var timeDiff = date1.getTime() - date2.getTime();
 		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 		app.vars.daysTraveling.splice(0, 1);
-		app.vars.daysTraveling.push(diffDays);
+		app.vars.daysTraveling.push(Math.abs(diffDays));
 	}, // get dates end
 
 	// change the info on the last page based on the users input + data
@@ -143,71 +171,10 @@ var app = {
 		v.infoDistance.innerHTML = Math.ceil(distance) + 'km';
 		v.infoCost.innerHTML = '$' + days *  109;
 		v.infoVehicle.innerHTML = vehicle;
-	},
-
-
-
-
-}; // APP END
-
-// -------------------------
-//  	   CALLING
-// -------------------------
-app.eventListeners();
-
-
-
-// -------------------------
-//     CONSOLE LOGS
-// -------------------------
-
-// -------------------------
-//          TEST JS
-// -------------------------
-var testingJs = function(){
-	var v = app.vars;
-
-
-	var page = $(".page-four__content")[0]
-	page.addEventListener('click', catTest, false);
-
-	function catTest(e) {
-		console.dir(e.target);
-	}
-
-
-
-
-	// show the vehicles depending on inputs
-	$('#scrollBtnThree').click(function(){
-		app.getDates(v.startDate, v.endDate);
-		compareData('motorbike', vehicles.motorbike, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorbike' );
-		compareData('smallCar', vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Small Car' );
-		compareData('largeCar', vehicles.largeCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Large Car' );
-		compareData('motorhome', vehicles.motorhome, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorhome'  );
-	});
-
-	// when selecting go back on the fourth page, delete the current vehicles in the page
-	$('#fourthBackBtn').on('click', function(){
-		deleteChildren();
-	});
-
-	// when selecting go back on the fourth page, delete the current vehicles in the page
-	function deleteChildren(){
-		var p = app.vars.pageFourDiv
-		var l = p.childNodes.length - 1;
-		console.log(l);
-
-		for(var i = 2; i < l; i++){
-			console.log(i);
-			p.removeChild(p.childNodes[2]);
-		}
-	};
-
-
+	}, // delete this function
 
 	// take the data given and create vehicles based on that
-	function compareData(objName, obj, seats, days, displayName){
+	compareData: function(objName, obj, seats, days, displayName){
 		var p4 = app.vars.pageFourDiv;
 		var v = app.vars;
 		var fuelCost =  Math.ceil( ((v.mapboxDistance[0] / 100) * obj.fuel) * 2.50 );
@@ -236,18 +203,11 @@ var testingJs = function(){
 			var choose = document.getElementById('choose');
 			choose.insertAdjacentHTML('afterend', newVehicle);
 		}
-	};
-
-
-	// the confirm buttons on the expanded vehicle options
-	chooseVehicle('#motorbikeBtn', 'Motorbike', vehicles.motorbike);
-	chooseVehicle('#smallCarBtn', 'Small Car', vehicles.smallCar);
-	chooseVehicle('#largeCarBtn', 'Large Car', vehicles.largeCar);
-	chooseVehicle('#motorhomeBtn', 'Motorhome', vehicles.motorhome);
-
+	},
 
 	// show the final page data
-	function chooseVehicle(buttonId, vehicleName, dataItem){
+	chooseVehicle: function(buttonId, vehicleName, dataItem){
+		var v = app.vars;
 		$(document).on('click', buttonId, function(){
 			$.fn.pagepiling.moveSectionDown();
 			setTimeout(function(){
@@ -260,5 +220,67 @@ var testingJs = function(){
 			v.infoDays.innerHTML = v.daysTraveling[0];
 			v.infoDistance.innerHTML = Math.ceil(v.mapboxDistance[0]) + ' km';
 		});
+	},
+
+
+
+
+}; // APP END
+
+// -------------------------
+//  	   CALLING
+// -------------------------
+app.eventListeners();
+
+
+
+// -------------------------
+//     CONSOLE LOGS
+// -------------------------
+
+// -------------------------
+//          TEST JS
+// -------------------------
+var testingJs = function(){
+	var v = app.vars;
+
+	var page = $(".page-four__content")[0]
+	page.addEventListener('click', catTest, false);
+
+	function catTest(e) {
+		console.dir(e.target);
+	}
+
+
+
+
+	// show the vehicles depending on inputs
+	$('#scrollBtnThree').click(function(){
+
+	});
+
+	// when selecting go back on the fourth page, delete the current vehicles in the page
+	$('#fourthBackBtn').on('click', function(){
+		deleteChildren();
+	});
+
+	// when selecting go back on the fourth page, delete the current vehicles in the page
+	function deleteChildren(){
+		var p = app.vars.pageFourDiv
+		var l = p.childNodes.length - 1;
+
+		for(var i = 2; i < l; i++){
+			p.removeChild(p.childNodes[2]);
+		}
 	};
+
+
+
+
+
+
+
+
+
+
 }();
