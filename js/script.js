@@ -244,20 +244,6 @@ app.eventListeners();
 var testingJs = function(){
 	var v = app.vars;
 
-	var page = $(".page-four__content")[0]
-	page.addEventListener('click', catTest, false);
-
-	function catTest(e) {
-		console.dir(e.target);
-	}
-
-
-
-
-	// show the vehicles depending on inputs
-	$('#scrollBtnThree').click(function(){
-
-	});
 
 	// when selecting go back on the fourth page, delete the current vehicles in the page
 	$('#fourthBackBtn').on('click', function(){
