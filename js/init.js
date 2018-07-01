@@ -35,6 +35,10 @@ var directions = new MapboxDirections({
 });
 
 map.addControl(directions, 'top-left');
+$('.mapbox-directions-profile')[0].style.display = 'none';
+$('.directions-control-instructions')[0].style.display = 'none'
+$('.mapboxgl-ctrl-bottom-right')[0].style.display = 'none'
+$('.mapboxgl-ctrl-bottom-left')[0].style.display = 'none'
 // mapbox end
 
 
@@ -56,7 +60,8 @@ var dateFormat = 'mm/dd/yy',
 		dateFormat: 'dd/mm/yy',
 		defaultDate: 0,
 		minDate: 0,
-		numberOfMonths: 1
+		numberOfMonths: 1,
+		maxDate: '+15d'
 	});
 
 // sets return date to only show from pickDate
@@ -80,7 +85,9 @@ function compareDates(startDate, endDate) {
 		return diffDays;
 	}
 
-
-// These three lines go inside your funation to check the number of days
-
-//
+	// --------------------------------
+	//  	      TOOLTIPS
+	// --------------------------------
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
