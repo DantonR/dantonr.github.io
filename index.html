@@ -6,12 +6,15 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Transport Web App</title>
 
-	<!-- BOOTSTRAP -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
 	<!-- MAPBOX -->
 	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
 	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+
+	<!-- JQUERY UI -->
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
 	<!-- PAGEPILING -->
 	<link rel="stylesheet" type="text/css" href="css/jquery.pagepiling.css" />
@@ -31,15 +34,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 header">
-						<button class="btn btn-secondary"></button>
+
 					</div>
 					<div class="col-md-12 content">
 						<h1 class="heading-one">Book & Go</h1>
-						<p class="para__intro">Looking to explore New Zealand? Plan your trip  here at Book & Go and find the best rental vehicle  for you.</p>
+						<p class="body1">Looking to explore New Zealand? Plan your trip  here at Book & Go and find the best rental vehicle  for you.</p>
 					</div>
 					<div class="col-md-12 footer">
-						<p class="para__intro">PLAN YOUR TRIP!</p>
-						<button class="btn btn-primary" id="scrollBtnOne"></button>
+						<button class="btn btn-primary" id="scrollBtnOne">Plan your trip!</button>
 					</div>
 				</div>
 			</div>
@@ -52,7 +54,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 header">
-						<button class="btn btn-secondary"></button>
+
 						<h6>GO BACK</h6>
 					</div>
 					<div class="col-md-12 content">
@@ -63,7 +65,7 @@
 
 					</div>
 					<div class="col-md-12 footer">
-						<button class="btn btn-primary" id="scrollBtnTwo"></button>
+						<button class="btn btn-primary" id="scrollBtnTwo">Next</button>
 					</div>
 				</div>
 			</div>
@@ -76,15 +78,14 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 header">
-						<button class="btn btn-secondary"></button>
 						<h6>GO BACK</h6>
 					</div>
 					<div class="col-md-12 content">
-						<h2 class="heading-two">How many seats will you need</h2>
+						<h2 class="heading-two">How many seats will you need?</h2>
 
 						<form class="user-form user-form__people" action="index.html" method="post">
 							<!-- <input type="number" class="user-input" name="people" placeholder="Amount of people"> -->
-							<select class="user-input" name="options" id="seatsNeeded">
+							<select class="user-input" name="options" id="seatsNeeded" data-toggle="tooltip" data-placement="top" data-trigger="manual" title="Please specify the seats needed">
 								<option value="">Amount of people</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -96,15 +97,14 @@
 							<br />
 						</form>
 						<!-- <h3>Total People: <strong>5</strong></h3> -->
-						<form class="user-form user-form__days">
-							<h2>How many days will you be traveling?</h2>
-							<input type="date" name="startDate" min="2018-01-01" max="2020-12-31" class="user-input user-input__calender"  id="startDate"><br>
-							<input type="date" name="endDate" min="2018-01-02" max="2020-12-31" class="user-input user-input__calender" id="endDate"><br>
-						</form>
+						<h2>How many days will you be traveling?</h2>
+
+						<input type="text" id="pickDate" name="pickDate" class="user-input user-input__calender" placeholder="Pickup date">
+						<input type="text" id="dropDate" name="dropDate" class="user-input user-input__calender" placeholder="Dropoff date" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" title="Please input your travel dates">
 						<!-- <h3>Total Days: <strong>12</strong></h3> -->
 					</div>
 					<div class="col-md-12 footer">
-						<button class="btn btn-primary" id="scrollBtnThree"></button>
+						<button class="btn btn-primary" id="scrollBtnThree" >next</button>
 					</div>
 				</div>
 			</div>
@@ -117,30 +117,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 header">
-						<button class="btn btn-secondary"></button>
-						<h6>GO BACK</h6>
+						<h6  id="fourthBackBtn">GO BACK</h6>
 					</div>
 					<div class="col-md-12 content page-four__content">
-						<div  id="bike">
-							<img src="http://via.placeholder.com/80x80" alt="">
-							<h3>Motorbike</h3>
-							<!-- <div class="page-4__card__inner"></div> -->
-						</div>
-						<div id="smallCar">
-							<img class="card__img" src="img/artboard 1.png" alt="Two seater car" />
-							<h3>2 Seated Car</h3>
-						</div>
-						<div id="largeCar">
-							<img src="http://via.placeholder.com/80x80" alt="">
-							<h3>4 Seated Car</h3>
-						</div>
-						<div id="motorhome">
-							<img src="http://via.placeholder.com/80x80" alt="">
-							<h3>Motorhome</h3>
-						</div>
-					</div>
-					<div class="col-md-12 footer">
-						<button class="btn btn-primary" id="scrollBtnFour"></button>
+						<h1 id="choose">Choose your vehicle:</h1>
 					</div>
 				</div>
 			</div>
@@ -153,24 +133,19 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 header">
-						<button class="btn btn-secondary">?</button>
-						<h6>GO BACK</h6>
 					</div>
 					<div class="col-md-12 content">
 						<h1>Awesome! Here are your trip details:</h1>
 						<div class="page-five__card" id="infoDisplay">
-							<h4>Pickup</h4>
+							<p class="green">Pickup:</p>
 							<p id="infoPickup">Wellington on the 25th of May</p>
-							<h4>Dropoff</h4>
+							<p class="green">Dropoff:</p>
 							<p id="infoDropoff">Auckland on the 30th of May</p>
-							<h4>Days traveling</h4>
-							<p id="infoDays">5</p>
-							<h4>Distance:</h4>
-							<p id="infoDistance">327km</p>
-							 <h4>Vehicle:</h4>
-							 <p id="infoVehicle">2 seater car</p>
-							 <img src="" alt="">
-							 <h4>Rental Cost:</h4>
+							<p class="green">Days traveling: <span id="infoDays" class="right-align black">Text</span></p>
+							<p class="green">Distance: <span id="infoDistance" class="right-align black">327km</span></p>
+							 <p class="green">Vehicle:<span id="infoVehicle" class="right-align black">2 Seater Car</span></p>
+							 <img id="infoImage" src="img/smallCar.png" alt="">
+							 <p class="green">Rental Cost:</p>
 							 <h3 id="infoCost">$2248</h3>
 						</div>
 					</div>
@@ -213,22 +188,30 @@
 	<!-- mapbox -->
 
 
+
 	<!-- JQUERY -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<!-- JQ UI -->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<!-- Bootstrap & POPPER JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
 
 	<!-- PAGEPILING -->
-	<script type="text/javascript" src="js/jquery.pagepiling.js"></script>
+	<script src="js/jquery.pagepiling.js"></script>
 
 	<!-- MATERIAL DESIGN -->
-	<script type="text/javascript" src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
 	<!-- DATA -->
-	<script type="text/javascript" src="js/data.js"></script>
+	<script src="js/data.js"></script>
 
 	<!-- INIT APIS -->
-	<script type="text/javascript" src="js/init.js"></script>
+	<script src="js/init.js"></script>
 
 	<!-- MY SCRIPT -->
-	<script type="text/javascript" src="js/script.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

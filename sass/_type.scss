@@ -7,24 +7,38 @@ $scale--2: 2.113rem; // 21 px
 $scale--1: 1.691rem; // 16px
 
 
-.heading-one {
-	font-size: $scale--4;
-	color: white;
-	text-align: center;
-}
-.heading-two {
-	font-size: $scale--3;
-	font-weight: 400;
-}
-.para__intro {
-	color: white;
-	font-size: $scale--1;
-	margin-bottom: 0;
-}
 h2 {
 	font-size: $scale--3;
 	font-weight: 400;
 }
 h3 {
 	font-weight: 300;
+}
+
+h1 {
+	font-size: $scale--4;
+	color: white;
+	text-align: center;
+}
+h2 {
+	font-size: $scale--3;
+	font-weight: 400;
+}
+p {
+	font-size: $scale--1;
+	margin: 0;
+}
+.body1 {
+	color: white;
+	font-size: $scale--1;
+	margin-bottom: 0;
+}
+.tooltip-inner {
+	font-size: 1.8rem;
+}
+#ui-datepicker-div {
+	font-size: 1.5rem;
+}
+#infoCost {
+	font-size: 4rem;
 }

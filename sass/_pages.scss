@@ -19,13 +19,13 @@
 .page-four {
 	@include fullscreen;
 	background-image: url("../img/road.jpg");
-	height: 93vh;
+	height: 100vh;
 }
 
 // Fifth page
 .page-five {
 	@include fullscreen;
 	background-image: url("../img/kea.jpg");
-	height: 73vh;
 	background-position: bottom left;
+	height: 100vh;
 }
