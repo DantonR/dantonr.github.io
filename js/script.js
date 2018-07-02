@@ -4,6 +4,18 @@
 // when the user inputs locations into the mapbox fields, push the distance into an array
 directions.on('route', function(directions){
 	var v = app.vars;
+	if(directions.route.length === 0) {
+		$('.directions-control')[0].id = 'mbControls';
+		$('.directions-control')[0].dataset.originalTitle = "This is not a valid route";
+		$('.directions-control')[0].title = "This is not a valid route";
+		$('.directions-control')[0].dataset.placement = "bottom";
+		$('.directions-control')[0].dataset.toggle = "tooltip";
+		$('.directions-control')[0].dataset.trigger = "manual";
+		$('#mbControls').tooltip('show');
+		setTimeout(function(){
+			$('.tooltip').tooltip('hide');
+		}, 3000);
+	}
 	v.mapboxDistance.splice(0, 1);
 	v.mapboxDistance.push(directions.route["0"].distance / 1000);
 	// take the value the user inputs to mapbox, and get the first word (origin & desitination)
@@ -16,8 +28,7 @@ directions.on('route', function(directions){
 	$('#scrollBtnTwo')[0].style.transform = 'translateY(0px)';
 });
 directions.on('origin', function(directions){
-	var v = app.vars
-	console.dir(typeof v.mapboxOrigin.value);
+	var v = app.vars;
 });
 
 
@@ -73,7 +84,8 @@ var app = {
 		infoDays: document.getElementById('infoDays'),
 		infoDistance: document.getElementById('infoDistance'),
 		infoVehicle: document.getElementById('infoVehicle'),
-		infoCost: document.getElementById('infoCost')
+		infoCost: document.getElementById('infoCost'),
+		infoImage: document.getElementById('infoImage')
 	},
 
 
@@ -100,8 +112,19 @@ var app = {
 			$('.directions-control')[0].dataset.trigger = "manual";
 			if (v.mapboxDistance[0] === 'a') {
 				$('#mbControls').tooltip('show');
+				setTimeout(function(){
+					$('.tooltip').tooltip('hide');
+				}, 2000);
 			} else if(v.mapboxDestination.value === '' || v.mapboxOrigin.value === ''){
 				$('#mbControls').tooltip('show');
+				setTimeout(function(){
+					$('.tooltip').tooltip('hide');
+				}, 2000);
+			} else if(v.mapboxDistance.length === 0) {
+				$('#mbControls').tooltip('show');
+				setTimeout(function(){
+					$('.tooltip').tooltip('hide');
+				}, 2000);
 			} else {
 				$('.tooltip').tooltip('hide');
 				$.fn.pagepiling.moveSectionDown();
@@ -119,6 +142,7 @@ var app = {
 			app.compareData('smallCar', vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Small Car' );
 			app.compareData('largeCar', vehicles.largeCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Large Car' );
 			app.compareData('motorhome', vehicles.motorhome, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorhome'  );
+
 			// run the function getDates, taking the date inputs as arguments
 				$('.tooltip').tooltip('hide');
 			if (v.seatsNeeded.value === '') {
@@ -127,7 +151,7 @@ var app = {
 				$('#dropDate').tooltip('show');
 				setTimeout(function(){
 					$('#dropDate').tooltip('hide');
-				}, 2000)
+				}, 2000);
 			} else if(v.daysTraveling[0] > 15) {
 				$('#dropDate')[0].dataset.originalTitle = 'Max days is 15';
 				$('#dropDate').tooltip('show');
@@ -136,7 +160,7 @@ var app = {
 				$('#seatsNeeded').tooltip('show');
 			} else if ( (v.seatsNeeded.value === '5' || v.seatsNeeded.value === '6')  && v.daysTraveling[0] < 2) {
 				$('#seatsNeeded')[0].dataset.originalTitle = 'You must be traveling for more than 3 days for this option';
-				$('#seatsNeeded').tooltip('show');;
+				$('#seatsNeeded').tooltip('show');
 			} else {
 				$.fn.pagepiling.moveSectionDown();
 			}
@@ -164,10 +188,10 @@ var app = {
 
 
 		// * page 4 individual vehicle buttons *
-		app.chooseVehicle('#motorbikeBtn', 'Motorbike', vehicles.motorbike);
-		app.chooseVehicle('#smallCarBtn', 'Small Car', vehicles.smallCar);
-		app.chooseVehicle('#largeCarBtn', 'Large Car', vehicles.largeCar);
-		app.chooseVehicle('#motorhomeBtn', 'Motorhome', vehicles.motorhome);
+		app.chooseVehicle('#motorbikeBtn', 'Motorbike', vehicles.motorbike, 'motorbike');
+		app.chooseVehicle('#smallCarBtn', 'Small Car', vehicles.smallCar, 'smallCar');
+		app.chooseVehicle('#largeCarBtn', 'Large Car', vehicles.largeCar, 'largeCar');
+		app.chooseVehicle('#motorhomeBtn', 'Motorhome', vehicles.motorhome, 'motorhome');
 
 		// expand the vehicle div when clicked on, and hide the others
 		$(".page-four__content").on('click', '.page-4__card', function(){
@@ -183,6 +207,12 @@ var app = {
 				$.fn.pagepiling.moveSectionUp();
 			}
 		}, false);
+
+
+		// when selecting go back on the fourth page, delete the current vehicles in the page
+		$('#fourthBackBtn').on('click', function(){
+			app.deleteChildren();
+		});
 	}, // event listener ending
 
 
@@ -196,7 +226,7 @@ var app = {
 
 	// take the dates given and calculate the amount of days traveling
 	getDates: function(b, a) {
-		var v = app.vars
+		var v = app.vars;
 		var pickDate = $('#pickDate').datepicker('getDate');
 		var dropDate = $('#dropDate').datepicker('getDate');
 		compareDates(pickDate, dropDate);
@@ -209,17 +239,6 @@ var app = {
 		app.vars.daysTraveling.splice(0, 1);
 		app.vars.daysTraveling.push(Math.abs(diffDays));
 	}, // get dates end
-
-	// change the info on the last page based on the users input + data
-	displayInfo: function(pickup, dropoff, days, distance, vehicle) {
-		var v = app.vars;
-		v.infoPickup.innerHTML = pickup.value;
-		v.infoDropoff.innerHTML = dropoff.value;
-		v.infoDays.innerHTML = days;
-		v.infoDistance.innerHTML = Math.ceil(distance) + 'km';
-		v.infoCost.innerHTML = '$' + days *  109;
-		v.infoVehicle.innerHTML = vehicle;
-	}, // delete this function
 
 	// take the data given and create vehicles based on that
 	compareData: function(objName, obj, seats, days, displayName){
@@ -254,7 +273,7 @@ var app = {
 	},
 
 	// show the final page data
-	chooseVehicle: function(buttonId, vehicleName, dataItem){
+	chooseVehicle: function(buttonId, vehicleName, dataItem, imgName){
 		var v = app.vars;
 		$(document).on('click', buttonId, function(){
 			$.fn.pagepiling.moveSectionDown();
@@ -267,8 +286,19 @@ var app = {
 			v.infoDropoff.innerHTML = v.mapboxDestinationVal[0] + ' on the ' + v.endDate.value;
 			v.infoDays.innerHTML = v.daysTraveling[0];
 			v.infoDistance.innerHTML = Math.ceil(v.mapboxDistance[0]) + ' km';
+			v.infoImage.src = 'img/' + imgName + '.png';
 		});
 	},
+
+	// when selecting go back on the fourth page, delete the current vehicles in the page
+	deleteChildren: function(){
+		var p = app.vars.pageFourDiv;
+		var l = p.childNodes.length - 1;
+
+		for(var i = 2; i < l; i++){
+			p.removeChild(p.childNodes[2]);
+		}
+	}
 
 
 
@@ -279,42 +309,3 @@ var app = {
 //  	   CALLING
 // -------------------------
 app.eventListeners();
-
-
-
-// -------------------------
-//     CONSOLE LOGS
-// -------------------------
-
-// -------------------------
-//          TEST JS
-// -------------------------
-var testingJs = function(){
-	var v = app.vars;
-
-
-	// when selecting go back on the fourth page, delete the current vehicles in the page
-	$('#fourthBackBtn').on('click', function(){
-		deleteChildren();
-	});
-
-	// when selecting go back on the fourth page, delete the current vehicles in the page
-	function deleteChildren(){
-		var p = app.vars.pageFourDiv
-		var l = p.childNodes.length - 1;
-
-		for(var i = 2; i < l; i++){
-			p.removeChild(p.childNodes[2]);
-		}
-	};
-
-
-
-
-
-
-
-
-
-
-}();

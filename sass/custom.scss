@@ -30,6 +30,9 @@
 .hidden-text {
 	margin-top: 8%;
 }
+.black {
+	color: black;
+}
 
 
 
@@ -187,4 +190,10 @@
 }
 .page-five__card--show {
 	transform: translateY(0px);
+}
+#infoDropoff {
+	margin-bottom: 3rem;
+}
+#infoImage {
+	width: 50%;
 }
