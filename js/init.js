@@ -55,14 +55,16 @@ var dateFormat = 'mm/dd/yy',
 		})
 		.on('change', function() {
 			to.datepicker('option', 'minDate', getDate(this));
-		}),
+		});
 	to = $('#dropDate').datepicker({
 		dateFormat: 'dd/mm/yy',
 		defaultDate: 0,
 		minDate: 0,
-		numberOfMonths: 1,
-		maxDate: '+15d'
-	});
+		numberOfMonths: 1
+	})
+	.on( "change", function() {
+        from.datepicker( "option", "maxDate", getDate( this ) );
+      });
 
 // sets return date to only show from pickDate
 function getDate(element) {
@@ -77,17 +79,9 @@ function getDate(element) {
 	return date;
 }
 
-function compareDates(startDate, endDate) {
-		var date1 = new Date(startDate);
-		var date2 = new Date(endDate);
-		var timeDiff = date2.getTime() - date1.getTime();
-		var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-		return diffDays;
-	}
-
-	// --------------------------------
-	//  	      TOOLTIPS
-	// --------------------------------
-	$(function () {
-		$('[data-toggle="tooltip"]').tooltip()
-	})
+// --------------------------------
+//  	      TOOLTIPS
+// --------------------------------
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip()
+})
