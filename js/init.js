@@ -9,7 +9,8 @@
 $('#pagepiling').pagepiling({
 	verticalCentered: false,
 	scrollingSpeed: 50,
-	navigation: false
+	navigation: false,
+	keyboardScrolling: false
 	// normalScrollElements: '#map .mapboxgl-map, .mapboxgl-control-container'
 });
 $.fn.pagepiling.setAllowScrolling(false);

@@ -65,7 +65,7 @@ var app = {
 		var v = app.vars;
 		// * home page button press
 		v.scrollBtns[0].addEventListener('click', function(){
-			$.fn.pagepiling.moveSectionDown();
+			$.fn.pagepiling.moveTo(2);
 		}, false);
 
 
@@ -97,7 +97,6 @@ var app = {
 				v.mapboxDestinationVal.push(destination[0]);
 				$('#scrollBtnTwo')[0].style.transform = 'translateY(0px)';
 			}
-			console.dir(v.mapboxDistance);
 		});
 
 
@@ -112,16 +111,21 @@ var app = {
 		v.scrollBtns[2].addEventListener('click', function(){
 			// take the input values and use them as arguments for the following functions
 			app.getDates(v.startDate, v.endDate);
-			app.compareData('motorbike', vehicles.motorbike, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorbike' );
-			app.compareData('smallCar', vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Small Car' );
-			app.compareData('largeCar', vehicles.largeCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Large Car' );
-			app.compareData('motorhome', vehicles.motorhome, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorhome'  );
+			app.compareData('motorbike', vehicles.motorbike, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorbike');
+			app.compareData('smallCar', vehicles.smallCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Small Car');
+			app.compareData('largeCar', vehicles.largeCar, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Large Car');
+			app.compareData('motorhome', vehicles.motorhome, parseInt(v.seatsNeeded.value), v.daysTraveling[0], 'Motorhome');
 
 			// hide any tooltips that are showing
 			$('.tooltip').tooltip('hide');
 
 			// validate the inputs
 			app.formValidation();
+
+			// prevent button from being double clicked
+			var el = $(this);
+			el.prop('disabled', true);
+			setTimeout(function(){el.prop('disabled', false); }, 1000);
 		}, false);
 
 
@@ -201,7 +205,7 @@ var app = {
 			}, 2000);
 		} else {
 			$('.tooltip').tooltip('hide');
-			$.fn.pagepiling.moveSectionDown();
+			$.fn.pagepiling.moveTo(3);
 		}
 	},
 
@@ -247,7 +251,7 @@ var app = {
 			$('#seatsNeeded')[0].dataset.originalTitle = 'You must be traveling for at least 3 days for this option';
 			$('#seatsNeeded').tooltip('show');
 		} else {
-			$.fn.pagepiling.moveSectionDown();
+			$.fn.pagepiling.moveTo(4);
 		}
 	},
 
@@ -266,7 +270,6 @@ var app = {
 			newVehicle += 		'<img class="card__img center-align" src="img/' + objName + '.png" alt="Two seater car" />';
 			newVehicle += 		'<h2 class="center-align green">' + displayName + '</h2>';
 			newVehicle += 		'<div class="hidden-text">';
-			newVehicle += 			'<p class="center-align">Lorem ipsum dolor sit</p>';
 			newVehicle += 			multipleSeats;
 			newVehicle += 			'<p class="light"><strong>$' + obj.cost + '</strong> per day</p>';
 			newVehicle += 			'<p class="margin-before green"><strong>Costs for your trip:</strong></p>';
@@ -287,7 +290,7 @@ var app = {
 	chooseVehicle: function(buttonId, vehicleName, dataItem, imgName){
 		var v = app.vars;
 		$(document).on('click', buttonId, function(){
-			$.fn.pagepiling.moveSectionDown();
+			$.fn.pagepiling.moveTo(5);
 			setTimeout(function(){
 				v.pageFiveCard.classList.add('page-five__card--show');
 			}, 700);
