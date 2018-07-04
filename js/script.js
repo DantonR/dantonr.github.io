@@ -73,6 +73,8 @@ var app = {
 		directions.on('route', function(directions){
 			// when the users start point/destination is not valid, alert them with tooltip
 			if(directions.route.length === 0) {
+				v.mapboxDistance.splice(0, 1);
+				v.mapboxDistance.push('a');
 				$('.directions-control')[0].id = 'mbControls';
 				$('.directions-control')[0].dataset.originalTitle = "This is not a valid route";
 				$('.directions-control')[0].title = "This is not a valid route";
@@ -83,17 +85,19 @@ var app = {
 				setTimeout(function(){
 					$('.tooltip').tooltip('hide');
 				}, 3000);
+			} else {
+				v.mapboxDistance.splice(0, 1);
+				v.mapboxDistance.push(directions.route["0"].distance / 1000);
+				// take the value the user inputs to mapbox, and get the first word (origin & desitination)
+				v.mapboxOriginVal.splice(0, 1);
+				v.mapboxDestinationVal.splice(0, 1);
+				origin = v.mapboxOrigin.value.split(',');
+				v.mapboxOriginVal.push(origin[0]);
+				destination = v.mapboxDestination.value.split(',');
+				v.mapboxDestinationVal.push(destination[0]);
+				$('#scrollBtnTwo')[0].style.transform = 'translateY(0px)';
 			}
-			v.mapboxDistance.splice(0, 1);
-			v.mapboxDistance.push(directions.route["0"].distance / 1000);
-			// take the value the user inputs to mapbox, and get the first word (origin & desitination)
-			v.mapboxOriginVal.splice(0, 1);
-			v.mapboxDestinationVal.splice(0, 1);
-			origin = v.mapboxOrigin.value.split(',');
-			v.mapboxOriginVal.push(origin[0]);
-			destination = v.mapboxDestination.value.split(',');
-			v.mapboxDestinationVal.push(destination[0]);
-			$('#scrollBtnTwo')[0].style.transform = 'translateY(0px)';
+			console.dir(v.mapboxDistance);
 		});
 
 
@@ -164,6 +168,7 @@ var app = {
 		$('#fourthBackBtn').on('click', function(){
 			app.deleteChildren();
 		});
+
 	}, // event listener ending
 
 
@@ -238,8 +243,8 @@ var app = {
 		} else if (v.seatsNeeded.value === '1' && v.daysTraveling[0] > 10) {
 			$('#seatsNeeded')[0].dataset.originalTitle = 'The maximum travel length for this option is 10 days';
 			$('#seatsNeeded').tooltip('show');
-		} else if ( (v.seatsNeeded.value === '5' || v.seatsNeeded.value === '6')  && v.daysTraveling[0] < 2) {
-			$('#seatsNeeded')[0].dataset.originalTitle = 'You must be traveling for more than 3 days for this option';
+		} else if ( (v.seatsNeeded.value === '3' || v.seatsNeeded.value === '4' || v.seatsNeeded.value === '5' || v.seatsNeeded.value === '6')  && v.daysTraveling[0] < 2) {
+			$('#seatsNeeded')[0].dataset.originalTitle = 'You must be traveling for at least 3 days for this option';
 			$('#seatsNeeded').tooltip('show');
 		} else {
 			$.fn.pagepiling.moveSectionDown();
@@ -284,7 +289,7 @@ var app = {
 		$(document).on('click', buttonId, function(){
 			$.fn.pagepiling.moveSectionDown();
 			setTimeout(function(){
-				app.vars.pageFiveCard.style.transform = 'translateY(20px)';
+				v.pageFiveCard.classList.add('page-five__card--show');
 			}, 700);
 			v.infoVehicle.innerHTML = vehicleName;
 			v.infoCost.innerHTML = '$' + dataItem.cost * v.daysTraveling;
