@@ -310,5 +310,8 @@ p {
 
   .page-five {
     height: 70vh; } }
+@media only screen and (max-width: 500px) {
+  .content {
+    height: 75vh; } }
 
 /*# sourceMappingURL=custom.css.map */
