@@ -1,21 +1,23 @@
 .header {
-	height: 7vh;
-	margin-bottom: 1vh;
-	align-items: center;
-	display: flex;
-	justify-content: flex-end;
+  height: 7vh;
+  margin-bottom: 1vh;
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
 }
 .content {
-	height: 77vh;
-	margin-bottom: 1vh;
+  height: 77vh;
+  margin-bottom: 1vh;
 }
 .footer {
-	height: 14vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.header, .content, .footer {
-	// border: 2px solid pink;
+.header,
+.content,
+.footer {
+  // border: 2px solid pink;
 }
